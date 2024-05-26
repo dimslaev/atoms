@@ -1,0 +1,84 @@
+@import "./_responsive.scss";
+
+$space-dirs: (
+  "t": "top",
+  "l": "left",
+  "b": "bottom",
+  "r": "right",
+);
+
+@mixin space() {
+  @each $bp-key in map-keys($breakpoints) {
+    @if $bp-key == initial {
+      @each $size-key in map-keys($spaces) {
+        $size-value: map-get($spaces, $size-key);
+
+        @each $dir-key in map-keys($space-dirs) {
+          $dir-value: map-get($space-dirs, $dir-key);
+
+          .m#{$dir-key}-#{$size-key} {
+            margin-#{$dir-value}: $size-value;
+          }
+          .p#{$dir-key}-#{$size-key} {
+            padding-#{$dir-value}: $size-value;
+          }
+        }
+
+        .mx-#{$size-key} {
+          margin-left: $size-value;
+          margin-right: $size-value;
+        }
+        .my-#{$size-key} {
+          margin-top: $size-value;
+          margin-bottom: $size-value;
+        }
+        .px-#{$size-key} {
+          padding-left: $size-value;
+          padding-right: $size-value;
+        }
+        .py-#{$size-key} {
+          padding-top: $size-value;
+          padding-bottom: $size-value;
+        }
+      }
+    } @else {
+      $bp-value: map-get($breakpoints, $bp-key);
+
+      @media screen and (min-width: $bp-value) {
+        @each $size-key in map-keys($spaces) {
+          $size-value: map-get($spaces, $size-key);
+
+          @each $dir-key in map-keys($space-dirs) {
+            $dir-value: map-get($space-dirs, $dir-key);
+
+            .m#{$dir-key}-#{$bp-key}-#{$size-key} {
+              margin-#{$dir-value}: $size-value;
+            }
+            .p#{$dir-key}-#{$bp-key}-#{$size-key} {
+              padding-#{$dir-value}: $size-value;
+            }
+          }
+
+          .mx-#{$bp-key}-#{$size-key} {
+            margin-top: $size-value;
+            margin-bottom: $size-value;
+          }
+          .my-#{$bp-key}-#{$size-key} {
+            margin-left: $size-value;
+            margin-right: $size-value;
+          }
+          .px-#{$bp-key}-#{$size-key} {
+            padding-top: $size-value;
+            padding-bottom: $size-value;
+          }
+          .py-#{$bp-key}-#{$size-key} {
+            padding-left: $size-value;
+            padding-right: $size-value;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include space();

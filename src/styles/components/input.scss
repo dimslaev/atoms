@@ -1,0 +1,15 @@
+.input {
+  @extend %input;
+}
+
+.input input {
+  @extend %input-input;
+}
+
+.input svg {
+  @extend %input-icon;
+}
+
+@include input-colors("input");
+
+@include input-sizes("input");

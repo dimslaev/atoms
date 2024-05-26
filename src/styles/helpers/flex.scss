@@ -1,0 +1,24 @@
+@import "./_responsive.scss";
+
+$flex-directions: (
+  "row": row,
+  "col": column,
+);
+
+$flex-items: (
+  "start": flex-start,
+  "center": center,
+  "end": flex-end,
+);
+
+$flex-justifies: (
+  "start": flex-start,
+  "center": center,
+  "end": flex-end,
+  "between": between,
+);
+
+@include responsive-helper("dir", "flex-direction", $flex-directions);
+@include responsive-helper("align", "align-items", $flex-items);
+@include responsive-helper("justify", "justify-content", $flex-justifies);
+@include responsive-helper("gap", "gap", $spaces);

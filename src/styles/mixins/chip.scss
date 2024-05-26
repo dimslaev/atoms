@@ -1,0 +1,25 @@
+@mixin chip-sizes() {
+  @each $size in sm, md, lg {
+    $py: map-get($chip-sizes, $size);
+    $px: $py * 2;
+    $radius: $py * 2 + 2.4rem;
+    $gap: $py * 0.5;
+    $font-size: map-get($chip-font-sizes, $size);
+
+    .chip-#{$size} {
+      padding: calc($py - var(--border-width)) $px;
+      border-radius: $radius;
+      font-size: $font-size;
+    }
+
+    .chip-#{$size}.chip-w-start {
+      gap: $gap;
+      padding-left: calc($gap + var(--border-width));
+    }
+
+    .chip-#{$size}.chip-w-end {
+      gap: $gap;
+      padding-right: calc($gap + var(--border-width));
+    }
+  }
+}

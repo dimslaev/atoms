@@ -1,0 +1,19 @@
+.tabs {
+  @extend %tabs;
+}
+
+.tab {
+  @extend %tab;
+}
+
+.tab-label {
+  @extend %button-label;
+}
+
+.tab svg {
+  @extend %button-icon;
+}
+
+@include tab-colors();
+
+@include tab-sizes();

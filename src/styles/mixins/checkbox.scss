@@ -1,0 +1,87 @@
+%checkbox {
+  display: flex;
+  align-items: center;
+  position: relative;
+  user-select: none;
+}
+
+%checkbox-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width) solid;
+}
+
+@mixin checkbox-colors() {
+  .checkbox input {
+    border-color: var(--outline);
+  }
+
+  .checkbox input:checked {
+    border-color: var(--primary);
+    background-color: var(--primary);
+  }
+
+  .checkbox input:checked + svg {
+    color: var(--on-primary);
+  }
+
+  @each $color in error, success {
+    .checkbox-#{$color} label {
+      color: var(--#{$color});
+    }
+
+    .checkbox-#{$color} input,
+    .checkbox-#{$color} input:checked {
+      border-color: var(--#{$color});
+    }
+
+    .checkbox-#{$color} input:checked {
+      background-color: var(--#{$color});
+    }
+  }
+
+  .checkbox-disabled label {
+    color: var(--action-disabled-text);
+  }
+
+  .checkbox-disabled input,
+  .checkbox-disabled input:checked {
+    border-color: var(--outline);
+  }
+
+  .checkbox-disabled input:checked {
+    background-color: var(--outline);
+  }
+
+  .checkbox-disabled input:checked + svg {
+    color: var(--on-primary);
+  }
+}
+
+@mixin checkbox-sizes() {
+  @each $size in sm, md, lg {
+    $width: map-get($checbox-sizes, $size);
+    $height: map-get($checbox-sizes, $size);
+    $gap: map-get($checbox-gap, $size);
+    $label-font-size: map-get($checbox-label-font-sizes, $size);
+    $icon-size: map-get($icon-sizes, $size);
+
+    .checkbox-#{$size} {
+      gap: $gap;
+    }
+
+    .checkbox-#{$size} label {
+      font-size: $label-font-size;
+    }
+
+    .checkbox-#{$size} input {
+      width: $width;
+      height: $height;
+    }
+
+    .checkbox-#{$size} input + svg {
+      left: calc(($width - $icon-size) / 2);
+    }
+  }
+}

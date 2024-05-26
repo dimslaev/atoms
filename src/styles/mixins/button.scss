@@ -1,0 +1,176 @@
+%button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+  user-select: none;
+
+  border-width: var(--border-width);
+  border-style: solid;
+
+  font-family: var(--font-family-1);
+  font-weight: 500;
+  line-height: 2.4rem;
+
+  transition: all var(--motion-time-sm) ease-in-out;
+}
+
+%button-label {
+  display: inline-flex;
+  position: relative;
+  z-index: 1;
+}
+
+%button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+@mixin button-colors($selector) {
+  @each $color in primary, success, error {
+    // solid
+
+    .#{$selector}-#{$color}.#{$selector}-solid:not(.#{$selector}-disabled) {
+      color: var(--on-#{$color});
+      background-color: var(--#{$color});
+      border-color: var(--#{$color});
+    }
+
+    @if ($selector != chip) {
+      .#{$selector}-#{$color}.#{$selector}-solid:not(
+          .#{$selector}-disabled
+        ):hover {
+        background-color: var(--#{$color}-hover);
+        border-color: var(--#{$color}-hover);
+      }
+
+      .#{$selector}-#{$color}.#{$selector}-solid:not(
+          .#{$selector}-disabled
+        ):active {
+        background-color: var(--#{$color}-pressed);
+        border-color: var(--#{$color}-pressed);
+      }
+    } @else {
+      .#{$selector}-#{$color}.#{$selector}-solid.#{$selector}-btn:not(
+          .#{$selector}-disabled
+        ):hover {
+        background-color: var(--#{$color}-hover);
+        border-color: var(--#{$color}-hover);
+      }
+
+      .#{$selector}-#{$color}.#{$selector}-solid.#{$selector}-btn:not(
+          .#{$selector}-disabled
+        ):active {
+        background-color: var(--#{$color}-pressed);
+        border-color: var(--#{$color}-pressed);
+      }
+    }
+
+    // outline
+
+    .#{$selector}-#{$color}.#{$selector}-outline:not(.#{$selector}-disabled) {
+      color: var(--#{$color});
+      border-color: var(--#{$color});
+    }
+
+    @if ($selector != chip) {
+      .#{$selector}-#{$color}.#{$selector}-outline:not(
+          .#{$selector}-disabled
+        ):hover {
+        color: var(--on-#{$color});
+        background-color: var(--#{$color});
+        border-color: var(--#{$color});
+      }
+
+      .#{$selector}-#{$color}.#{$selector}-outline:not(
+          .#{$selector}-disabled
+        ):active {
+        color: var(--on-#{$color});
+        background-color: var(--#{$color}-pressed);
+        border-color: var(--#{$color}-pressed);
+      }
+    } @else {
+      .#{$selector}-#{$color}.#{$selector}-outline.#{$selector}-btn:not(
+          .#{$selector}-disabled
+        ):hover {
+        color: var(--on-#{$color});
+        background-color: var(--#{$color});
+        border-color: var(--#{$color});
+      }
+
+      .#{$selector}-#{$color}.#{$selector}-outline.#{$selector}-btn:not(
+          .#{$selector}-disabled
+        ):active {
+        color: var(--on-#{$color});
+        background-color: var(--#{$color}-pressed);
+        border-color: var(--#{$color}-pressed);
+      }
+    }
+
+    // text
+
+    .#{$selector}-#{$color}.#{$selector}-text:not(.#{$selector}-disabled) {
+      color: var(--#{$color});
+      border-color: transparent;
+    }
+
+    @if ($selector != chip) {
+      .#{$selector}-#{$color}.#{$selector}-text:not(
+          .#{$selector}-disabled
+        ):hover {
+        color: var(--#{$color}-hover);
+      }
+
+      .#{$selector}-#{$color}.#{$selector}-text:not(
+          .#{$selector}-disabled
+        ):active {
+        color: var(--#{$color}-pressed);
+      }
+    }
+  }
+
+  .#{$selector}-disabled:not(.#{$selector}-text) {
+    color: var(--action-disabled-text);
+    background-color: var(--action-disabled-background);
+    border-color: var(--action-disabled-background);
+    cursor: not-allowed;
+  }
+
+  .#{$selector}-disabled.#{$selector}-text {
+    color: var(--action-disabled-text);
+    border-color: transparent;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-sizes() {
+  @each $size in sm, md, lg {
+    $py: map-get($button-sizes, $size);
+    $px: $py * 2;
+    $gap: $py * 0.5;
+    $font-size: map-get($btn-font-sizes, $size);
+    $icon-size: map-get($icon-sizes, $size);
+
+    .btn-#{$size}:not(.btn-icon) {
+      padding: calc($py - var(--border-width)) $px;
+      font-size: $font-size;
+    }
+
+    .btn-#{$size}:not(.btn-icon).btn-w-start {
+      gap: $gap;
+      padding-left: calc($px - $gap);
+    }
+
+    .btn-#{$size}:not(.btn-icon).btn-w-end {
+      gap: $gap;
+      padding-right: calc($px - $gap);
+    }
+
+    .btn-#{$size}.btn-icon {
+      padding: calc($py - var(--border-width) + (2.4rem - $icon-size) / 2);
+    }
+  }
+}

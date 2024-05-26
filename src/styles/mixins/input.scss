@@ -1,0 +1,120 @@
+%input {
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: var(--text-primary);
+}
+
+%input-input {
+  display: block;
+  line-height: 2.4rem;
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--outline);
+  color: inherit;
+  transition: all var(--motion-time-sm) ease-in-out;
+}
+
+%input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  pointer-events: none;
+}
+
+@mixin input-colors($selector) {
+  .#{$selector}:not(
+      .#{$selector}-error,
+      .#{$selector}-success,
+      .#{$selector}-disabled
+    )
+    #{$selector}:focus {
+    border-color: var(--primary);
+  }
+
+  .#{$selector}:not(
+      .#{$selector}-error,
+      .#{$selector}-success,
+      .#{$selector}-disabled
+    )
+    svg {
+    color: var(--on-surface-variant);
+  }
+
+  .#{$selector}:not(
+      .#{$selector}-error,
+      .#{$selector}-success,
+      .#{$selector}-disabled
+    )
+    svg:has(+ #{$selector}:focus),
+  .#{$selector}:not(
+      .#{$selector}-error,
+      .#{$selector}-success,
+      .#{$selector}-disabled
+    )
+    #{$selector}:focus
+    + svg {
+    color: var(--primary);
+  }
+
+  .#{$selector}-error,
+  .#{$selector}-error svg:has(+ #{$selector}:focus),
+  .#{$selector}-error #{$selector}:focus + svg {
+    color: var(--error);
+  }
+
+  .#{$selector}-error #{$selector} {
+    border-color: var(--error);
+  }
+
+  .#{$selector}-success {
+    color: var(--success);
+  }
+
+  .#{$selector}-success #{$selector} {
+    border-color: var(--success);
+  }
+
+  .#{$selector}-disabled {
+    color: var(--action-disabled-text);
+  }
+
+  .#{$selector}-disabled #{$selector} {
+    background-color: var(--action-disabled-background);
+    border-color: var(--action-disabled-background);
+    cursor: not-allowed;
+  }
+}
+
+@mixin input-sizes($selector) {
+  @each $size in sm, md, lg {
+    $py: map-get($input-sizes, $size);
+    $px: $input-px;
+    $font-size: map-get($input-font-sizes, $size);
+    $icon-size: map-get($icon-sizes, $size);
+    $height: $py * 2 + 2.4rem;
+
+    .#{$selector}-#{$size} #{$selector} {
+      padding: calc($py - var(--border-width)) $px;
+      font-size: $font-size;
+    }
+
+    .#{$selector}-#{$size}.#{$selector}-w-start #{$selector} {
+      padding-left: calc($icon-size + $px + var(--border-width));
+    }
+
+    .#{$selector}-#{$size}.#{$selector}-w-start svg:first-child {
+      top: calc(($height - $icon-size) / 2);
+      left: calc($px * 0.5 + var(--border-width));
+    }
+
+    .#{$selector}-#{$size}.#{$selector}-w-end #{$selector} {
+      padding-right: calc($icon-size + $px + var(--border-width));
+    }
+
+    .#{$selector}-#{$size}.#{$selector}-w-end svg:last-child {
+      top: calc(($height - $icon-size) / 2);
+      right: calc($px * 0.5 + var(--border-width));
+    }
+  }
+}

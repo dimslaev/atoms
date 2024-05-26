@@ -1,0 +1,9 @@
+@import "./_responsive.scss";
+
+$displays: (
+  "block": block,
+  "none": none,
+  "flex": flex,
+);
+
+@include responsive-helper("d", "display", $displays);

@@ -1,0 +1,34 @@
+%card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: map-get($spaces, "5");
+  padding: map-get($spaces, "5");
+  background-color: var(--surface);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+%card-title {
+  margin-top: -0.4rem;
+  margin-bottom: -0.4rem;
+}
+
+%card-content {
+  margin-top: -0.6rem;
+  margin-bottom: -0.4rem;
+}
+
+%card-media {
+  position: relative;
+  z-index: 1;
+  margin-top: map-get($spaces, "5") * -1;
+  margin-left: map-get($spaces, "5") * -1;
+  margin-right: map-get($spaces, "5") * -1;
+}
+
+%card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: map-get($spaces, "2");
+}

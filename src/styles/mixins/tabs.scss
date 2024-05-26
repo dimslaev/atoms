@@ -1,0 +1,86 @@
+%tabs {
+  display: flex;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: var(--border-width);
+    background-color: var(--primary);
+  }
+}
+
+%tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+
+  border: var(--border-width) solid transparent;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+
+  font-family: var(--font-family-1);
+  font-weight: 500;
+  line-height: 2.4rem;
+
+  transition: all var(--motion-time-sm) ease-in-out;
+}
+
+@mixin tab-colors {
+  .tab:not(.tab-active, .tab-disabled) {
+    color: var(--text-primary);
+  }
+
+  .tab:not(.tab-active, .tab-disabled):hover {
+    color: var(--primary);
+  }
+
+  .tab-active {
+    color: var(--on-primary);
+    background-color: var(--primary);
+    border-color: var(--primary);
+  }
+
+  .tab-disabled {
+    color: var(--action-disabled-text);
+    background-color: var(--action-disabled-background);
+    border-color: var(--action-disabled-background);
+    cursor: not-allowed;
+  }
+}
+
+@mixin tab-sizes() {
+  @each $size in sm, md, lg {
+    $py: map-get($button-sizes, $size);
+    $px: $py * 2;
+    $gap: $py * 0.5;
+    $font-size: map-get($btn-font-sizes, $size);
+    $icon-size: map-get($icon-sizes, $size);
+
+    .tab-#{$size}:not(.tab-icon) {
+      padding: calc($py - var(--border-width)) $px;
+      font-size: $font-size;
+    }
+
+    .tab-#{$size}:not(.tab-icon).tab-w-start {
+      gap: $gap;
+      padding-left: calc($px - $gap);
+    }
+
+    .tab-#{$size}:not(.tab-icon).tab-w-end {
+      gap: $gap;
+      padding-right: calc($px - $gap);
+    }
+
+    .tab-#{$size}.tab-icon {
+      padding: calc($py - var(--border-width) + (2.4rem - $icon-size) / 2);
+    }
+  }
+}

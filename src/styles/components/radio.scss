@@ -1,0 +1,30 @@
+.radio {
+  @extend %checkbox;
+}
+
+.radio input {
+  @extend %checkbox-input;
+  border-radius: 100%;
+}
+
+.radio input:checked::before {
+  position: absolute;
+  display: block;
+  content: "";
+  border-radius: 100%;
+}
+
+.radio:not(.radio-disabled),
+.radio:not(.radio-disabled) > * {
+  cursor: pointer;
+  transition: all var(--motion-time-sm);
+}
+
+@include radio-colors();
+
+.radio-disabled,
+.radio-disabled > * {
+  cursor: not-allowed;
+}
+
+@include radio-sizes();
