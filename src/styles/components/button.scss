@@ -1,0 +1,38 @@
+.btn {
+  @extend %button;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-label {
+  @extend %button-label;
+}
+
+.btn svg {
+  @extend %button-icon;
+}
+
+@include button-colors($selector: btn);
+
+@include button-sizes();
+
+.btn-circle {
+  border-radius: 100%;
+}
+
+.btn-loading {
+  animation: loading-animation 1s linear infinite;
+}
+
+@keyframes loading-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  0% {
+    opacity: 1;
+  }
+}

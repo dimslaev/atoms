@@ -1,0 +1,35 @@
+:root {
+  --font-family-1: "Inter", sans-serif;
+  --font-family-2: "Inter", sans-serif;
+
+  --weight-regular: 400;
+  --weight-semibold: 500;
+  --weight-bold: 600;
+
+  --h1: 3.2rem;
+  --h2: 2.8rem;
+  --h3: 2.1rem;
+  --h4: 1.8rem;
+  --h5: 1.4rem;
+  --h6: 1.2rem;
+  --p: 1.6rem;
+  --small: 1.4rem;
+
+  --h1-weight: var(--weight-bold);
+  --h2-weight: var(--weight-bold);
+  --h3-weight: var(--weight-bold);
+  --h4-weight: var(--weight-bold);
+  --h5-weight: var(--weight-bold);
+  --h6-weight: var(--weight-bold);
+  --p-weight: var(--weight-regular);
+  --small-weight: var(--weight-regular);
+
+  --h1-family: var(--font-family-1);
+  --h2-family: var(--font-family-1);
+  --h3-family: var(--font-family-1);
+  --h4-family: var(--font-family-1);
+  --h5-family: var(--font-family-1);
+  --h6-family: var(--font-family-1);
+  --p-family: var(--font-family-2);
+  --small-family: var(--font-family-2);
+}

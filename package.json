@@ -1,0 +1,76 @@
+{
+  "name": "atoms",
+  "description": "An atomic component library for React",
+  "tags": [
+    "react",
+    "ui",
+    "typescript",
+    "atomic",
+    "scss",
+    "css variables",
+    "custom properties",
+    "light mode",
+    "dark mode"
+  ],
+  "version": "0.1.0",
+  "author": "Dimitar Slaev <dimslaev@gmail.com>",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --fix"
+  },
+  "scripts": {
+    "dev": "yarn watch:css & vite",
+    "build": "yarn clean && yarn build:css && yarn build:js",
+    "build:docs": "rimraf docs && vite build -c vite.config.docs.ts && yarn cp:redirects",
+    "build:js": "tsc --p ./tsconfig.build.json && vite build",
+    "build:css": "sass src/styles/main.scss public/styles.css --no-source-map --style compressed",
+    "watch:css": "sass --watch src/styles/main.scss public/styles.css --no-source-map",
+    "cp:redirects": "cp docs-src/_redirects docs",
+    "clean": "rimraf dist public/styles.css",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "yarn lint --fix",
+    "lint:types": "tsc --noEmit",
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "prepare": "husky install"
+  },
+  "peerDependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
+    "classnames": "^2.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
+    "@testing-library/react": "^14.2.2",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^18.2.23",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "classnames": "^2.5.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-testing-library": "^6.2.0",
+    "glob": "^10.4.1",
+    "husky": ">=6",
+    "jsdom": "^24.0.0",
+    "lint-staged": ">=10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1",
+    "sass": "^1.77.2",
+    "typescript": "^5.4.3",
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.4.0"
+  }
+}

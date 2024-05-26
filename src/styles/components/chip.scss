@@ -1,0 +1,19 @@
+.chip {
+  @extend %button;
+}
+
+.chip-label {
+  @extend %button-label;
+}
+
+.chip svg {
+  @extend %button-icon;
+}
+
+.chip-btn {
+  cursor: pointer;
+}
+
+@include button-colors($selector: chip);
+
+@include chip-sizes();

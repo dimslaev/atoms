@@ -1,0 +1,69 @@
+@mixin radio-colors() {
+  .radio input {
+    border-color: var(--outline);
+  }
+
+  .radio input:checked {
+    border-color: var(--primary);
+  }
+
+  .radio input:checked::before {
+    background-color: var(--primary);
+  }
+
+  @each $color in error, success {
+    .radio-#{$color} label {
+      color: var(--#{$color});
+    }
+
+    .radio-#{$color} input,
+    .radio-#{$color} input:checked {
+      border-color: var(--#{$color});
+    }
+
+    .radio-#{$color} input:checked::before {
+      background-color: var(--#{$color});
+    }
+  }
+
+  .radio-disabled label {
+    color: var(--action-disabled-text);
+  }
+
+  .radio-disabled input,
+  .radio-disabled input:checked {
+    border-color: var(--outline);
+  }
+
+  .radio-disabled input:checked::before {
+    background-color: var(--outline);
+  }
+}
+
+@mixin radio-sizes() {
+  @each $size in sm, md, lg {
+    $radio-size: map-get($radio-sizes, $size);
+    $before-size: $radio-size - 0.583 * $radio-size;
+    $gap: map-get($radio-gap, $size);
+    $label-font-size: map-get($radio-label-font-sizes, $size);
+    $icon-size: map-get($icon-sizes, $size);
+
+    .radio-#{$size} {
+      gap: $gap;
+    }
+
+    .radio-#{$size} label {
+      font-size: $label-font-size;
+    }
+
+    .radio-#{$size} input {
+      width: $radio-size;
+      height: $radio-size;
+    }
+
+    .radio-#{$size} input::before {
+      width: $before-size;
+      height: $before-size;
+    }
+  }
+}

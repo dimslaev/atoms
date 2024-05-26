@@ -1,0 +1,37 @@
+.card {
+  @extend %card;
+
+  &:not(.card-no-border) {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      border: var(--border-width) solid var(--outline);
+      border-radius: var(--border-radius);
+    }
+  }
+
+  &-title {
+    @extend %card-title;
+  }
+
+  &-content {
+    @extend %card-content;
+  }
+
+  &-actions {
+    @extend %card-actions;
+  }
+
+  &-media {
+    @extend %card-media;
+  }
+
+  &:has(.card-title, .card-content) .card-media {
+    margin-bottom: 0.2rem;
+  }
+}

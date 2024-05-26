@@ -1,0 +1,73 @@
+// Button
+
+$button-sizes: (
+  "sm": 0.4rem,
+  "md": 0.8rem,
+  "lg": 1.2rem,
+);
+
+$btn-font-sizes: (
+  "sm": 1.4rem,
+  "md": 1.6rem,
+  "lg": 1.8rem,
+);
+
+$btn-gap: (
+  "sm": 0.4rem,
+  "md": 0.6rem,
+  "lg": 0.8rem,
+);
+
+$icon-sizes: (
+  "sm": 1.8rem,
+  "md": 2.2rem,
+  "lg": 2.4rem,
+);
+
+$breakpoints: (
+  "initial": "0px",
+  "xs": "540px",
+  "sm": "768px",
+  "md": "1025px",
+  "lg": "1280px",
+);
+
+$spaces: (
+  "1": 0.4rem,
+  "2": 0.8rem,
+  "3": 1.2rem,
+  "4": 1.6rem,
+  "5": 2rem,
+  "6": 2.4rem,
+  "7": 2.8rem,
+  "8": 3.2rem,
+);
+
+// Input
+
+$input-sizes: $button-sizes;
+$input-font-sizes: $btn-font-sizes;
+$input-px: 0.8rem;
+
+// Checkbox
+
+$checbox-sizes: (
+  sm: 2rem,
+  md: 2.4rem,
+  lg: 2.8rem,
+);
+
+$checbox-label-font-sizes: $btn-font-sizes;
+$checbox-gap: $btn-gap;
+
+// Radio
+
+$radio-sizes: $checbox-sizes;
+$radio-label-font-sizes: $btn-font-sizes;
+$radio-gap: $btn-gap;
+
+// Chip
+
+$chip-sizes: $button-sizes;
+$chip-font-sizes: $btn-font-sizes;
+$chip-gap: $btn-gap;

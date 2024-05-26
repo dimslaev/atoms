@@ -1,0 +1,15 @@
+.textarea {
+  @extend %input;
+}
+
+.textarea textarea {
+  @extend %input-input;
+}
+
+.textarea svg {
+  @extend %input-icon;
+}
+
+@include input-colors("textarea");
+
+@include input-sizes("textarea");

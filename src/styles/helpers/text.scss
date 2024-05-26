@@ -1,0 +1,14 @@
+@mixin fonts() {
+  @each $key in h1, h2, h3, h4, h5, h6, p, small {
+    .#{$key} {
+      font-family: var(--#{$key}-family);
+      font-size: var(--#{$key});
+      font-weight: var(--#{$key}-weight);
+      @if ($key != "p" and $key != "small") {
+        line-height: 1.25;
+      }
+    }
+  }
+}
+
+@include fonts();

@@ -1,0 +1,15 @@
+.select {
+  @extend %input;
+}
+
+.select select {
+  @extend %input-input;
+}
+
+.select svg {
+  @extend %input-icon;
+}
+
+@include input-colors("select");
+
+@include input-sizes("select");

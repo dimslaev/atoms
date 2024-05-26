@@ -1,0 +1,21 @@
+@mixin label-colors() {
+  .label {
+    color: var(--text-primary);
+  }
+
+  @each $color in error, success {
+    .label-#{$color} {
+      color: var(--#{$color});
+    }
+  }
+}
+
+@mixin label-sizes() {
+  @each $size in sm, md, lg {
+    $label-font-size: map-get($btn-font-sizes, $size);
+
+    .label-#{$size} {
+      font-size: $label-font-size;
+    }
+  }
+}
