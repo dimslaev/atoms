@@ -1,32 +1,21 @@
-import {
-  TextareaHTMLAttributes,
-  ReactNode,
-  forwardRef,
-  ForwardedRef,
-} from "react";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
+import { TextareaHTMLAttributes, ReactNode, forwardRef } from "react";
+import { createBaseComponent, type CombineBaseProps } from "./base";
 import cn from "classnames";
 
-export interface TextareaProps
-  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "size">,
-    HelperProps {
+export interface TextareaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "size"> {
   size?: "md" | "lg" | "sm";
   error?: boolean;
   success?: boolean;
   disabled?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
-  placeholder?: string;
-  className?: string;
-  rows?: number;
-  cols?: number;
 }
 
-export const Textarea = forwardRef(
-  (props: TextareaProps, ref: ForwardedRef<HTMLTextAreaElement>) => {
-    const { helperClasses, restProps } = useHelperClasses(props);
-    const {
+const TextareaWrapper = createBaseComponent<TextareaProps>({}, "div");
+
+export const Textarea = forwardRef<HTMLTextAreaElement, CombineBaseProps<TextareaProps>>(
+  (
+    {
       size = "md",
       error = false,
       success = false,
@@ -34,9 +23,10 @@ export const Textarea = forwardRef(
       startIcon,
       endIcon,
       className,
-      placeholder,
-      ...rest
-    } = restProps as Omit<TextareaProps, keyof HelperProps>;
+      ...props
+    },
+    ref
+  ) => {
     const classes = cn({
       textarea: true,
       [`textarea-${size}`]: true,
@@ -45,21 +35,15 @@ export const Textarea = forwardRef(
       ["textarea-disabled"]: disabled,
       ["textarea-w-start"]: startIcon,
       ["textarea-w-end"]: endIcon,
-      [helperClasses]: !!helperClasses,
-      [className as string]: !!className,
+      [className!]: !!className,
     });
 
     return (
-      <div className={classes}>
+      <TextareaWrapper className={classes}>
         {startIcon}
-        <textarea
-          disabled={disabled}
-          placeholder={placeholder}
-          {...rest}
-          ref={ref}
-        />
+        <textarea ref={ref} disabled={disabled} {...props} />
         {endIcon}
-      </div>
+      </TextareaWrapper>
     );
   }
 );

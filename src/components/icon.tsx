@@ -6,9 +6,7 @@ import cn from "classnames";
 
 type Size = "sm" | "md" | "lg";
 
-export interface IconProps
-  extends Omit<ComponentProps<typeof MdiIcon>, "size">,
-    HelperProps {
+export interface IconProps extends Omit<ComponentProps<typeof MdiIcon>, "size">, HelperProps {
   size?: Size;
 }
 
@@ -20,11 +18,7 @@ const sizeMap: { [key in Size]: string } = {
 
 export const Icon = (props: IconProps) => {
   const { helperClasses, restProps } = useHelperClasses(props);
-  const {
-    size = "md",
-    className,
-    ...rest
-  } = restProps as Omit<IconProps, keyof HelperProps>;
+  const { size = "md", className, ...rest } = restProps as Omit<IconProps, keyof HelperProps>;
   const classes = cn({
     [helperClasses]: !!helperClasses,
     [className as string]: !!className,

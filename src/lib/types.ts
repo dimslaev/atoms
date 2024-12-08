@@ -19,19 +19,8 @@ export type SpacePrefix =
   | "pr"
   | "px"
   | "py";
-export type HelperPrefix =
-  | "d"
-  | "dir"
-  | "align"
-  | "justify"
-  | "gap"
-  | SpacePrefix;
-export type HelperValue =
-  | Display
-  | Space
-  | FlexDirection
-  | FlexAlign
-  | FlexJustify;
+export type HelperPrefix = "d" | "dir" | "align" | "justify" | "gap" | SpacePrefix;
+export type HelperValue = Display | Space | FlexDirection | FlexAlign | FlexJustify;
 export type Responsive<T extends string> = { [key in Breakpoint]?: T };
 export type HelperResposiveValue = Responsive<HelperValue>;
 export type SpaceProps = {

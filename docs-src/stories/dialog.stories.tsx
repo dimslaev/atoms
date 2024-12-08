@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-} from "../../src/components/dialog";
+import { Dialog, DialogTitle, DialogContent, DialogActions } from "../../src/components/dialog";
 import { Text } from "../../src/components/text";
 import { Button } from "../../src/components//button";
 
@@ -24,9 +19,7 @@ export function Default() {
               <Text variant="h3">Are you sure?</Text>
             </DialogTitle>
             <DialogContent>
-              <Text>
-                Please confirm by clicking confirm or otherwise cancel.
-              </Text>
+              <Text>Please confirm by clicking confirm or otherwise cancel.</Text>
             </DialogContent>
             <DialogActions>
               <Button variant="outline" onClick={() => setOpen(false)}>

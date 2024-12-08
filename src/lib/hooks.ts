@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { type SpacePrefix, type HelperProps } from "./types";
 import { getHelperClasses, spaceKeys } from "./utils";
 
-export function useHelperClasses(props: HelperProps & unknown) {
+export function useHelperClasses<T = unknown>(props: HelperProps & T) {
   const {
     display,
     direction,

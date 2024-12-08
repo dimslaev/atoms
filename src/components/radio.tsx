@@ -1,23 +1,20 @@
-import { InputHTMLAttributes, forwardRef, ForwardedRef } from "react";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
+import { InputHTMLAttributes, forwardRef } from "react";
+import { createBaseComponent, type CombineBaseProps } from "./base";
 import cn from "classnames";
 
-export interface RadioProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type">,
-    HelperProps {
+export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
   label?: string;
   size?: "md" | "lg" | "sm";
   error?: boolean;
   success?: boolean;
   disabled?: boolean;
-  className?: string;
 }
 
-export const Radio = forwardRef(
-  (props: RadioProps, ref: ForwardedRef<HTMLInputElement>) => {
-    const { helperClasses, restProps } = useHelperClasses(props);
-    const {
+const RadioBase = createBaseComponent<RadioProps>({}, "div");
+
+export const Radio = forwardRef<HTMLInputElement, CombineBaseProps<RadioProps>>(
+  (
+    {
       size = "md",
       error = false,
       success = false,
@@ -25,23 +22,26 @@ export const Radio = forwardRef(
       id = "",
       label = "",
       className,
-      ...rest
-    } = restProps as Omit<RadioProps, keyof HelperProps>;
+      ...props
+    },
+    ref
+  ) => {
     const classes = cn({
       radio: true,
       [`radio-${size}`]: true,
       ["radio-error"]: error,
       ["radio-success"]: success,
       ["radio-disabled"]: disabled,
-      [helperClasses]: !!helperClasses,
-      [className as string]: !!className,
+      [className!]: !!className,
     });
 
     return (
-      <div className={classes}>
-        <input id={id} type="radio" disabled={disabled} {...rest} ref={ref} />
+      <RadioBase className={classes}>
+        <input ref={ref} id={id} type="radio" disabled={disabled} {...props} />
         {label && <label htmlFor={id}>{label}</label>}
-      </div>
+      </RadioBase>
     );
   }
 );
+
+Radio.displayName = "Radio";

@@ -1,7 +1,7 @@
-import { Box, BoxProps } from "../../src/components/box";
+import { BaseComponent, BaseComponentProps } from "../../src/components/base";
 import { Container } from "../components/story-container";
 
-const marginRows: BoxProps[][] = [
+const marginRows: BaseComponentProps[][] = [
   [
     {
       children: "mt-4",
@@ -34,7 +34,7 @@ const marginRows: BoxProps[][] = [
   ],
 ];
 
-const paddingRows: BoxProps[][] = [
+const paddingRows: BaseComponentProps[][] = [
   [
     {
       children: "pt-4",
@@ -78,7 +78,7 @@ export function Default() {
               "repeating-linear-gradient(45deg, transparent,var(--on-primary) 4px,var(--blue-800) 4px,var(--blue-800) 8px)",
           }}
         >
-          <Box
+          <BaseComponent
             {...col}
             style={{
               background: "var(--primary)",
@@ -104,14 +104,14 @@ export function Default() {
               "repeating-linear-gradient(45deg, transparent,var(--on-primary) 4px,var(--primary) 4px,var(--primary) 8px)",
           }}
         >
-          <Box
+          <BaseComponent
             {...col}
             style={{
               // background: "var(--primary)",
               color: "var(--on-primary)",
             }}
           >
-            <Box
+            <BaseComponent
               style={{
                 background: "var(--primary)",
                 color: "var(--on-primary)",
@@ -119,8 +119,8 @@ export function Default() {
               }}
             >
               {children}
-            </Box>
-          </Box>
+            </BaseComponent>
+          </BaseComponent>
         </div>
       ))}
     </Container>
@@ -130,7 +130,7 @@ export function Default() {
       title="horizontal gap"
       rowStyle={{ background: "var(--primary-subdued)", padding: "1rem 2rem" }}
     >
-      <Box
+      <BaseComponent
         display="flex"
         gap="4"
         style={{
@@ -139,7 +139,7 @@ export function Default() {
         }}
       >
         {[1, 2, 3, 4].map((index) => (
-          <Box
+          <BaseComponent
             key={`hor-gap-${index}`}
             style={{
               background: "var(--primary)",
@@ -147,10 +147,10 @@ export function Default() {
               padding: "0.4rem",
             }}
           >
-            box
-          </Box>
+            BaseComponent
+          </BaseComponent>
         ))}
-      </Box>
+      </BaseComponent>
     </Container>
   );
   const verticalGap = (
@@ -158,7 +158,7 @@ export function Default() {
       title="vertical gap"
       rowStyle={{ background: "var(--primary-subdued)", padding: "1rem 2rem" }}
     >
-      <Box
+      <BaseComponent
         display="flex"
         direction="col"
         gap="4"
@@ -168,7 +168,7 @@ export function Default() {
         }}
       >
         {[1, 2, 3, 4].map((index) => (
-          <Box
+          <BaseComponent
             key={`ver-gap-${index}`}
             style={{
               background: "var(--primary)",
@@ -176,10 +176,10 @@ export function Default() {
               padding: "0.4rem",
             }}
           >
-            box
-          </Box>
+            BaseComponent
+          </BaseComponent>
         ))}
-      </Box>
+      </BaseComponent>
     </Container>
   );
   const horizontalAlign = (
@@ -191,26 +191,26 @@ export function Default() {
         display: "block",
       }}
     >
-      <Box display="flex" align="center" gap="4">
-        <Box
+      <BaseComponent display="flex" align="center" gap="4">
+        <BaseComponent
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0 0.4rem",
           }}
         >
-          box
-        </Box>
-        <Box
+          BaseComponent
+        </BaseComponent>
+        <BaseComponent
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          box
-        </Box>
-      </Box>
+          BaseComponent
+        </BaseComponent>
+      </BaseComponent>
     </Container>
   );
   const horizontalJustify = (
@@ -222,26 +222,26 @@ export function Default() {
         display: "block",
       }}
     >
-      <Box display="flex" justify="center" gap="4">
-        <Box
+      <BaseComponent display="flex" justify="center" gap="4">
+        <BaseComponent
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          box
-        </Box>
-        <Box
+          BaseComponent
+        </BaseComponent>
+        <BaseComponent
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          box
-        </Box>
-      </Box>
+          BaseComponent
+        </BaseComponent>
+      </BaseComponent>
     </Container>
   );
   const verticalAlign = (
@@ -253,26 +253,26 @@ export function Default() {
         display: "block",
       }}
     >
-      <Box display="flex" direction="col" align="center" gap="4">
-        <Box
+      <BaseComponent display="flex" direction="col" align="center" gap="4">
+        <BaseComponent
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          box
-        </Box>
-        <Box
+          BaseComponent
+        </BaseComponent>
+        <BaseComponent
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          box
-        </Box>
-      </Box>
+          BaseComponent
+        </BaseComponent>
+      </BaseComponent>
     </Container>
   );
   const verticalJustify = (
@@ -285,32 +285,32 @@ export function Default() {
         display: "block",
       }}
     >
-      <Box
+      <BaseComponent
         display="flex"
         direction="col"
         justify="end"
         gap="4"
         style={{ height: "100%" }}
       >
-        <Box
+        <BaseComponent
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          box
-        </Box>
-        <Box
+          BaseComponent
+        </BaseComponent>
+        <BaseComponent
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          box
-        </Box>
-      </Box>
+          BaseComponent
+        </BaseComponent>
+      </BaseComponent>
     </Container>
   );
 

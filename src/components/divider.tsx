@@ -1,23 +1,19 @@
 import { HTMLAttributes } from "react";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
+import { createBaseComponent, type CombineBaseProps } from "./base";
 import cn from "classnames";
 
-export interface DividerProps
-  extends HTMLAttributes<HTMLSpanElement>,
-    HelperProps {}
+export interface DividerProps extends HTMLAttributes<HTMLHRElement> {}
 
-export const Divider = (props: DividerProps) => {
-  const { helperClasses, restProps } = useHelperClasses(props);
-  const { className, ...rest } = restProps as Omit<
-    DividerProps,
-    keyof HelperProps
-  >;
-  const classes = cn({
-    divider: true,
-    [helperClasses]: !!helperClasses,
-    [className as string]: !!className,
-  });
+const DividerBase = createBaseComponent<DividerProps>({}, "hr");
 
-  return <hr className={classes} {...rest} />;
+export const Divider = ({ className, ...props }: CombineBaseProps<DividerProps>) => {
+  return (
+    <DividerBase
+      className={cn({
+        divider: true,
+        [className!]: !!className,
+      })}
+      {...props}
+    />
+  );
 };

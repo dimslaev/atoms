@@ -1,9 +1,8 @@
-import { HTMLAttributes, ReactNode, forwardRef, ForwardedRef } from "react";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
+import { HTMLAttributes, ReactNode, forwardRef } from "react";
+import { createBaseComponent, type CombineBaseProps } from "./base";
 import cn from "classnames";
 
-export interface ChipProps extends HTMLAttributes<HTMLDivElement>, HelperProps {
+export interface ChipProps extends HTMLAttributes<HTMLDivElement> {
   size?: "sm" | "md" | "lg";
   color?: "primary" | "success" | "error";
   variant?: "solid" | "outline";
@@ -12,13 +11,13 @@ export interface ChipProps extends HTMLAttributes<HTMLDivElement>, HelperProps {
   disabled?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
-  className?: string;
 }
 
-export const Chip = forwardRef(
-  (props: ChipProps, ref: ForwardedRef<HTMLDivElement>) => {
-    const { helperClasses, restProps } = useHelperClasses(props);
-    const {
+const ChipBase = createBaseComponent<Omit<ChipProps, "label">>({}, "div");
+
+export const Chip = forwardRef<HTMLDivElement, CombineBaseProps<ChipProps>>(
+  (
+    {
       size = "md",
       color = "primary",
       variant = "solid",
@@ -28,7 +27,10 @@ export const Chip = forwardRef(
       startIcon,
       endIcon,
       className,
-    } = restProps as Omit<ChipProps, keyof HelperProps>;
+      ...props
+    },
+    ref
+  ) => {
     const classes = cn({
       chip: true,
       [`chip-${size}`]: true,
@@ -38,22 +40,17 @@ export const Chip = forwardRef(
       ["chip-disabled"]: disabled,
       ["chip-w-start"]: startIcon,
       ["chip-w-end"]: endIcon,
-      [helperClasses]: !!helperClasses,
-      [className as string]: !!className,
+      [className!]: !!className,
     });
 
-    const children = (
-      <>
+    return (
+      <ChipBase ref={ref} className={classes} onClick={onClick} {...props}>
         {startIcon}
         <div className="chip-label">{label}</div>
         {endIcon}
-      </>
-    );
-
-    return (
-      <div className={classes} onClick={onClick} ref={ref}>
-        {children}
-      </div>
+      </ChipBase>
     );
   }
 );
+
+Chip.displayName = "Chip";

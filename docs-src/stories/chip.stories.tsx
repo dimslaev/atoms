@@ -48,12 +48,8 @@ const defaultChips: ChipProps[][] = [
 
 const rows: ChipProps[][] = [
   ...defaultChips,
-  ...defaultChips.map((row) =>
-    row.map((col) => ({ ...col, color: "success" as const }))
-  ),
-  ...defaultChips.map((row) =>
-    row.map((col) => ({ ...col, color: "error" as const }))
-  ),
+  ...defaultChips.map((row) => row.map((col) => ({ ...col, color: "success" as const }))),
+  ...defaultChips.map((row) => row.map((col) => ({ ...col, color: "error" as const }))),
   ...defaultChips.map((row) =>
     row.map((col) => ({
       ...col,

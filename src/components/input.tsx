@@ -1,16 +1,8 @@
-import {
-  InputHTMLAttributes,
-  ReactNode,
-  forwardRef,
-  ForwardedRef,
-} from "react";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
+import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
+import { createBaseComponent, type CombineBaseProps } from "./base";
 import cn from "classnames";
 
-export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size">,
-    HelperProps {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   size?: "md" | "lg" | "sm";
   error?: boolean;
   success?: boolean;
@@ -18,16 +10,13 @@ export interface InputProps
   type?: "text" | "password" | "email" | "number" | "tel" | "url" | "search";
   startIcon?: ReactNode;
   endIcon?: ReactNode;
-  placeholder?: string;
-  className?: string;
-  rows?: number;
-  cols?: number;
 }
 
-export const Input = forwardRef(
-  (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
-    const { helperClasses, restProps } = useHelperClasses(props);
-    const {
+const InputBase = createBaseComponent<InputProps>({}, "div");
+
+export const Input = forwardRef<HTMLInputElement, CombineBaseProps<InputProps>>(
+  (
+    {
       size = "md",
       error = false,
       success = false,
@@ -36,9 +25,10 @@ export const Input = forwardRef(
       startIcon,
       endIcon,
       className,
-      placeholder,
-      ...rest
-    } = restProps as Omit<InputProps, keyof HelperProps>;
+      ...props
+    },
+    ref
+  ) => {
     const classes = cn({
       input: true,
       [`input-${size}`]: true,
@@ -47,22 +37,17 @@ export const Input = forwardRef(
       ["input-disabled"]: disabled,
       ["input-w-start"]: startIcon,
       ["input-w-end"]: endIcon,
-      [helperClasses]: !!helperClasses,
-      [className as string]: !!className,
+      [className!]: !!className,
     });
 
     return (
-      <div className={classes}>
+      <InputBase className={classes}>
         {startIcon}
-        <input
-          type={type}
-          disabled={disabled}
-          placeholder={placeholder}
-          {...rest}
-          ref={ref}
-        />
+        <input ref={ref} type={type} disabled={disabled} {...props} />
         {endIcon}
-      </div>
+      </InputBase>
     );
   }
 );
+
+Input.displayName = "Input";

@@ -1,4 +1,4 @@
-export { Box } from "./components/box";
+export { BaseComponent } from "./components/base";
 export { Button } from "./components/button";
 export { Card } from "./components/card";
 export { Checkbox } from "./components/checkbox";

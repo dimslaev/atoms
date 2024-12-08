@@ -1,73 +1,86 @@
 import { HTMLAttributes } from "react";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
+import { createBaseComponent, type CombineBaseProps } from "./base";
 import cn from "classnames";
 
-export interface CardProps extends HTMLAttributes<HTMLDivElement>, HelperProps {
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   noBorder?: boolean;
 }
 
-export const Card = (props: CardProps) => {
-  const { helperClasses, restProps } = useHelperClasses(props);
-  const {
-    className,
-    noBorder = false,
-    ...rest
-  } = restProps as Omit<CardProps, keyof HelperProps>;
-  const classes = cn({
-    card: true,
-    ["card-no-border"]: noBorder,
-    [helperClasses]: !!helperClasses,
-    [className as string]: !!className,
-  });
+const CardBase = createBaseComponent<CardProps>();
 
-  return <div className={classes} {...rest} />;
+export const Card = ({ noBorder = false, className, ...props }: CombineBaseProps<CardProps>) => {
+  return (
+    <CardBase
+      className={cn({
+        card: true,
+        ["card-no-border"]: noBorder,
+        [className!]: !!className,
+      })}
+      {...props}
+    />
+  );
 };
 
-export interface CardMediaProps extends HTMLAttributes<HTMLDivElement> {}
+type CardMediaProps = HTMLAttributes<HTMLDivElement>;
 
-export const CardMedia = (props: CardMediaProps) => {
-  const { className, ...rest } = props;
-  const classes = cn({
-    "card-media": true,
-    [className as string]: !!className,
-  });
+const CardMediaBase = createBaseComponent<CardMediaProps>();
 
-  return <div className={classes} {...rest} />;
+export const CardMedia = ({ className, ...props }: CombineBaseProps<CardMediaProps>) => {
+  return (
+    <CardMediaBase
+      className={cn({
+        "card-media": true,
+        [className!]: !!className,
+      })}
+      {...props}
+    />
+  );
 };
 
-export interface CardContentProps extends HTMLAttributes<HTMLDivElement> {}
+type CardContentProps = HTMLAttributes<HTMLDivElement>;
 
-export const CardContent = (props: CardContentProps) => {
-  const { className, ...rest } = props;
-  const classes = cn({
-    "card-content": true,
-    [className as string]: !!className,
-  });
+const CardContentBase = createBaseComponent<CardContentProps>();
 
-  return <div className={classes} {...rest} />;
+export const CardContent = ({ className, ...props }: CombineBaseProps<CardContentProps>) => {
+  return (
+    <CardContentBase
+      className={cn({
+        "card-content": true,
+        [className!]: !!className,
+      })}
+      {...props}
+    />
+  );
 };
 
-export interface CardTitleProps extends HTMLAttributes<HTMLDivElement> {}
+type CardTitleProps = HTMLAttributes<HTMLDivElement>;
 
-export const CardTitle = (props: CardTitleProps) => {
-  const { className, ...rest } = props;
-  const classes = cn({
-    "card-title": true,
-    [className as string]: !!className,
-  });
+const CardTitleBase = createBaseComponent<CardTitleProps>();
 
-  return <div className={classes} {...rest} />;
+export const CardTitle = ({ className, ...props }: CombineBaseProps<CardTitleProps>) => {
+  return (
+    <CardTitleBase
+      className={cn({
+        "card-title": true,
+        [className!]: !!className,
+      })}
+      {...props}
+    />
+  );
 };
 
-export interface CardActionsProps extends HTMLAttributes<HTMLDivElement> {}
+type CardActionsProps = HTMLAttributes<HTMLDivElement>;
 
-export const CardActions = (props: CardActionsProps) => {
-  const { className, ...rest } = props;
-  const classes = cn({
-    "card-actions": true,
-    [className as string]: !!className,
-  });
+const CardActionsBase = createBaseComponent<CardActionsProps>();
 
-  return <div className={classes} {...rest} />;
+export const CardActions = ({ className, ...props }: CombineBaseProps<CardActionsProps>) => {
+  return (
+    <CardActionsBase
+      className={cn({
+        "card-actions": true,
+        [className!]: !!className,
+      })}
+      {...props}
+    />
+  );
 };

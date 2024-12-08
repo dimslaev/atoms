@@ -1,4 +1,4 @@
-export * as box from "./box.stories";
+export * as base from "./base.stories";
 export * as button from "./button.stories";
 export * as card from "./card.stories";
 export * as checkbox from "./checkbox.stories";

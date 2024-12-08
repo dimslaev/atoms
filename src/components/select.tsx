@@ -1,13 +1,7 @@
-import {
-  SelectHTMLAttributes,
-  ReactNode,
-  forwardRef,
-  ForwardedRef,
-} from "react";
+import { SelectHTMLAttributes, ReactNode, forwardRef } from "react";
 import { Icon } from "./icon";
 import { mdiMenuDown } from "@mdi/js";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
+import { createBaseComponent, type CombineBaseProps } from "./base";
 import cn from "classnames";
 
 export interface SelectOption {
@@ -16,21 +10,20 @@ export interface SelectOption {
 }
 
 export interface SelectProps
-  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size" | "multiple">,
-    HelperProps {
+  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size" | "multiple"> {
   size?: "md" | "lg" | "sm";
   error?: boolean;
   success?: boolean;
   disabled?: boolean;
   options: SelectOption[];
   startIcon?: ReactNode;
-  className?: string;
 }
 
-export const Select = forwardRef(
-  (props: SelectProps, ref: ForwardedRef<HTMLSelectElement>) => {
-    const { helperClasses, restProps } = useHelperClasses(props);
-    const {
+const SelectBase = createBaseComponent<Omit<SelectProps, "options">>({}, "div");
+
+export const Select = forwardRef<HTMLSelectElement, CombineBaseProps<SelectProps>>(
+  (
+    {
       size = "md",
       error = false,
       success = false,
@@ -38,9 +31,10 @@ export const Select = forwardRef(
       options,
       startIcon,
       className,
-      ...rest
-    } = restProps as Omit<SelectProps, keyof HelperProps>;
-
+      ...props
+    },
+    ref
+  ) => {
     const classes = cn({
       select: true,
       [`select-${size}`]: true,
@@ -49,24 +43,23 @@ export const Select = forwardRef(
       ["select-disabled"]: disabled,
       ["select-w-start"]: startIcon,
       ["select-w-end"]: true,
-      [helperClasses]: !!helperClasses,
-      [className as string]: !!className,
+      [className!]: !!className,
     });
 
     return (
-      <div className={classes}>
+      <SelectBase className={classes}>
         {startIcon}
-
-        <select disabled={disabled} {...rest} ref={ref}>
-          {options.map(({ value, label }) => (
+        <select ref={ref} disabled={disabled} {...props}>
+          {options?.map(({ value, label }) => (
             <option key={label} value={value}>
               {label}
             </option>
           ))}
         </select>
-
         <Icon path={mdiMenuDown} size={size} />
-      </div>
+      </SelectBase>
     );
   }
 );
+
+Select.displayName = "Select";

@@ -103,12 +103,8 @@ const defaultRows: ButtonProps[][] = [
 
 const rows: ButtonProps[][] = [
   ...defaultRows,
-  ...defaultRows.map((row) =>
-    row.map((col) => ({ ...col, color: "success" as const }))
-  ),
-  ...defaultRows.map((row) =>
-    row.map((col) => ({ ...col, color: "error" as const }))
-  ),
+  ...defaultRows.map((row) => row.map((col) => ({ ...col, color: "success" as const }))),
+  ...defaultRows.map((row) => row.map((col) => ({ ...col, color: "error" as const }))),
   ...defaultRows.map((row) => row.map((col) => ({ ...col, disabled: true }))),
   ...defaultRows.map((row) => row.map((col) => ({ ...col, loading: true }))),
 ];

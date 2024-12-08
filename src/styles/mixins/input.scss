@@ -23,35 +23,18 @@
 }
 
 @mixin input-colors($selector) {
-  .#{$selector}:not(
-      .#{$selector}-error,
-      .#{$selector}-success,
-      .#{$selector}-disabled
-    )
+  .#{$selector}:not(.#{$selector}-error, .#{$selector}-success, .#{$selector}-disabled)
     #{$selector}:focus {
     border-color: var(--primary);
   }
 
-  .#{$selector}:not(
-      .#{$selector}-error,
-      .#{$selector}-success,
-      .#{$selector}-disabled
-    )
-    svg {
+  .#{$selector}:not(.#{$selector}-error, .#{$selector}-success, .#{$selector}-disabled) svg {
     color: var(--on-surface-variant);
   }
 
-  .#{$selector}:not(
-      .#{$selector}-error,
-      .#{$selector}-success,
-      .#{$selector}-disabled
-    )
+  .#{$selector}:not(.#{$selector}-error, .#{$selector}-success, .#{$selector}-disabled)
     svg:has(+ #{$selector}:focus),
-  .#{$selector}:not(
-      .#{$selector}-error,
-      .#{$selector}-success,
-      .#{$selector}-disabled
-    )
+  .#{$selector}:not(.#{$selector}-error, .#{$selector}-success, .#{$selector}-disabled)
     #{$selector}:focus
     + svg {
     color: var(--primary);

@@ -2,13 +2,7 @@ import { useEffect, useState, useRef, Dispatch, SetStateAction } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import { Icon } from "@mdi/react";
-import {
-  mdiMoonWaxingCrescent,
-  mdiWhiteBalanceSunny,
-  mdiMenu,
-  mdiClose,
-  mdiGithub,
-} from "@mdi/js";
+import { mdiMoonWaxingCrescent, mdiWhiteBalanceSunny, mdiMenu, mdiClose, mdiGithub } from "@mdi/js";
 import "./style.css";
 
 type Story = {
@@ -56,11 +50,7 @@ export const Layout = ({ stories }: { stories: Story[] }) => {
           <nav className="stories__nav">
             <ul className="stories__nav-list">
               {stories.map((item) => (
-                <NavItem
-                  key={item.title}
-                  {...item}
-                  setAsideOpen={setAsideOpen}
-                />
+                <NavItem key={item.title} {...item} setAsideOpen={setAsideOpen} />
               ))}
             </ul>
           </nav>
@@ -119,11 +109,7 @@ export const SubItem = ({ title, story, setAsideOpen }: SubItemProps) => {
   const isActive = path === pathname;
 
   return (
-    <li
-      className={`stories__sub-item${
-        isActive ? " stories__sub-item--active" : ""
-      }`}
-    >
+    <li className={`stories__sub-item${isActive ? " stories__sub-item--active" : ""}`}>
       <Link
         to={path}
         onClick={(e) => {
@@ -163,17 +149,10 @@ export const HeaderActions = ({
           <Icon path={mdiGithub} />
         </button>
         <button className="stories__header-btn" onClick={onSwitchMode}>
-          <Icon
-            path={
-              mode === "dark" ? mdiWhiteBalanceSunny : mdiMoonWaxingCrescent
-            }
-          />
+          <Icon path={mode === "dark" ? mdiWhiteBalanceSunny : mdiMoonWaxingCrescent} />
         </button>
 
-        <button
-          className="stories__header-btn"
-          onClick={() => setAsideOpen(!asideOpen)}
-        >
+        <button className="stories__header-btn" onClick={() => setAsideOpen(!asideOpen)}>
           <Icon path={asideOpen ? mdiClose : mdiMenu} />
         </button>
       </div>

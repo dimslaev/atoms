@@ -1,11 +1,8 @@
-import { HTMLAttributes, ReactNode, forwardRef, ForwardedRef } from "react";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
+import { HTMLAttributes, ReactNode, forwardRef } from "react";
+import { createBaseComponent, type CombineBaseProps } from "./base";
 import cn from "classnames";
 
-export interface ButtonProps
-  extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
-    HelperProps {
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   size?: "md" | "lg" | "sm";
   color?: "primary" | "success" | "error";
   variant?: "solid" | "outline" | "text";
@@ -19,70 +16,60 @@ export interface ButtonProps
   endIcon?: ReactNode;
 }
 
-export const Button = forwardRef(
-  (
-    props: ButtonProps,
-    ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>
-  ) => {
-    const { helperClasses, restProps } = useHelperClasses(props);
-    const {
-      size = "md",
-      color = "primary",
-      variant = "solid",
-      disabled = false,
-      loading = false,
-      iconOnly = false,
-      circle = false,
-      type = "button",
-      startIcon,
-      endIcon,
-      href,
-      className,
-      children,
-      ...rest
-    } = restProps as Omit<ButtonProps, keyof HelperProps>;
-    const classes = cn({
-      btn: true,
-      [`btn-${size}`]: true,
-      [`btn-${color}`]: true,
-      [`btn-${variant}`]: true,
-      ["btn-disabled"]: disabled || loading,
-      ["btn-loading"]: loading,
-      ["btn-icon"]: iconOnly,
-      ["btn-circle"]: circle,
-      ["btn-w-start"]: startIcon,
-      ["btn-w-end"]: endIcon,
-      [helperClasses]: !!helperClasses,
-      [className as string]: !!className,
-    });
+export type CombinedButtonProps = CombineBaseProps<ButtonProps>;
 
-    if (href) {
-      return (
-        <a
-          className={classes}
-          href={href}
-          {...rest}
-          ref={ref as ForwardedRef<HTMLAnchorElement>}
-        >
-          {startIcon}
-          <div className="btn-label">{children}</div>
-          {endIcon}
-        </a>
-      );
-    }
+const ButtonBase = createBaseComponent<ButtonProps>({}, "button");
 
-    return (
-      <button
-        type={type}
-        className={classes}
-        disabled={disabled || loading}
-        {...rest}
-        ref={ref as ForwardedRef<HTMLButtonElement>}
-      >
-        {startIcon}
-        <div className="btn-label">{children}</div>
-        {endIcon}
-      </button>
-    );
-  }
-);
+export const Button = forwardRef<HTMLElement, CombinedButtonProps>((props, ref) => {
+  const {
+    size = "md",
+    color = "primary",
+    variant = "solid",
+    disabled = false,
+    loading = false,
+    iconOnly = false,
+    circle = false,
+    type = "button",
+    startIcon,
+    endIcon,
+    href,
+    className,
+    children,
+    ...rest
+  } = props;
+
+  const classes = cn({
+    btn: true,
+    [`btn-${size}`]: true,
+    [`btn-${color}`]: true,
+    [`btn-${variant}`]: true,
+    ["btn-disabled"]: disabled || loading,
+    ["btn-loading"]: loading,
+    ["btn-icon"]: iconOnly,
+    ["btn-circle"]: circle,
+    ["btn-w-start"]: startIcon,
+    ["btn-w-end"]: endIcon,
+    [className!]: !!className,
+  });
+
+  return (
+    <ButtonBase
+      ref={ref}
+      as={href ? "a" : "button"}
+      type={!href ? type : undefined}
+      href={href}
+      disabled={disabled || loading}
+      aria-busy={loading}
+      aria-disabled={href ? disabled || loading : undefined}
+      role={href ? "button" : undefined}
+      className={classes}
+      {...rest}
+    >
+      {startIcon}
+      <div className="btn-label">{children}</div>
+      {endIcon}
+    </ButtonBase>
+  );
+});
+
+Button.displayName = "Button";

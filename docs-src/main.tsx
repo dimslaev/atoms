@@ -1,9 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider as ReactRouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider as ReactRouterProvider } from "react-router-dom";
 import { routes } from "./routes";
 
 const router = createBrowserRouter(routes);
