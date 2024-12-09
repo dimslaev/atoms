@@ -1,18 +1,21 @@
+@use "sass:map";
+@use "../variables";
+
 @mixin responsive-helper($prefix, $rule, $map) {
-  @each $bp-key in map-keys($breakpoints) {
+  @each $bp-key in map.keys(variables.$breakpoints) {
     @if ($bp-key == initial) {
-      @each $key in map-keys($map) {
-        $value: map-get($map, $key);
+      @each $key in map.keys($map) {
+        $value: map.get($map, $key);
 
         .#{$prefix}-#{$key} {
           #{$rule}: $value;
         }
       }
     } @else {
-      $bp-value: map-get($breakpoints, $bp-key);
+      $bp-value: map.get(variables.$breakpoints, $bp-key);
       @media screen and (min-width: $bp-value) {
-        @each $key in map-keys($map) {
-          $value: map-get($map, $key);
+        @each $key in map.keys($map) {
+          $value: map.get($map, $key);
 
           .#{$prefix}-#{$bp-key}-#{$key} {
             #{$rule}: $value;

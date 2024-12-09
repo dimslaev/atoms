@@ -1,4 +1,6 @@
-@import "./_responsive.scss";
+@use "sass:map";
+@use "_responsive.scss";
+@use "../variables";
 
 $space-dirs: (
   "t": "top",
@@ -8,13 +10,13 @@ $space-dirs: (
 );
 
 @mixin space() {
-  @each $bp-key in map-keys($breakpoints) {
+  @each $bp-key in map.keys(variables.$breakpoints) {
     @if $bp-key == initial {
-      @each $size-key in map-keys($spaces) {
-        $size-value: map-get($spaces, $size-key);
+      @each $size-key in map.keys(variables.$spaces) {
+        $size-value: map.get(variables.$spaces, $size-key);
 
-        @each $dir-key in map-keys($space-dirs) {
-          $dir-value: map-get($space-dirs, $dir-key);
+        @each $dir-key in map.keys($space-dirs) {
+          $dir-value: map.get($space-dirs, $dir-key);
 
           .m#{$dir-key}-#{$size-key} {
             margin-#{$dir-value}: $size-value;
@@ -42,14 +44,14 @@ $space-dirs: (
         }
       }
     } @else {
-      $bp-value: map-get($breakpoints, $bp-key);
+      $bp-value: map.get(variables.$breakpoints, $bp-key);
 
       @media screen and (min-width: $bp-value) {
-        @each $size-key in map-keys($spaces) {
-          $size-value: map-get($spaces, $size-key);
+        @each $size-key in map.keys(variables.$spaces) {
+          $size-value: map.get(variables.$spaces, $size-key);
 
-          @each $dir-key in map-keys($space-dirs) {
-            $dir-value: map-get($space-dirs, $dir-key);
+          @each $dir-key in map.keys($space-dirs) {
+            $dir-value: map.get($space-dirs, $dir-key);
 
             .m#{$dir-key}-#{$bp-key}-#{$size-key} {
               margin-#{$dir-value}: $size-value;

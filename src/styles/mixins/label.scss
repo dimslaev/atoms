@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "../variables";
+
 @mixin label-colors() {
   .label {
     color: var(--text-primary);
@@ -12,7 +15,7 @@
 
 @mixin label-sizes() {
   @each $size in sm, md, lg {
-    $label-font-size: map-get($btn-font-sizes, $size);
+    $label-font-size: map.get(variables.$btn-font-sizes, $size);
 
     .label-#{$size} {
       font-size: $label-font-size;

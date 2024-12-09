@@ -1,3 +1,6 @@
+@use "../mixins/radio";
+@use "../mixins/checkbox";
+
 .radio {
   @extend %checkbox;
 }
@@ -20,11 +23,11 @@
   transition: all var(--motion-time-sm);
 }
 
-@include radio-colors();
+@include radio.radio-colors();
 
 .radio-disabled,
 .radio-disabled > * {
   cursor: not-allowed;
 }
 
-@include radio-sizes();
+@include radio.radio-sizes();

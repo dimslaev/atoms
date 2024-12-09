@@ -1,3 +1,6 @@
+@use "../mixins/button";
+@use "../mixins/chip";
+
 .chip {
   @extend %button;
 }
@@ -14,6 +17,6 @@
   cursor: pointer;
 }
 
-@include button-colors($selector: chip);
+@include button.button-colors($selector: chip);
 
-@include chip-sizes();
+@include chip.chip-sizes();

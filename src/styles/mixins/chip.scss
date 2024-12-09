@@ -1,10 +1,13 @@
+@use "sass:map";
+@use "../variables";
+
 @mixin chip-sizes() {
   @each $size in sm, md, lg {
-    $py: map-get($chip-sizes, $size);
+    $py: map.get(variables.$chip-sizes, $size);
     $px: $py * 2;
     $radius: $py * 2 + 2.4rem;
     $gap: $py * 0.5;
-    $font-size: map-get($chip-font-sizes, $size);
+    $font-size: map.get(variables.$chip-font-sizes, $size);
 
     .chip-#{$size} {
       padding: calc($py - var(--border-width)) $px;

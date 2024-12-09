@@ -1,9 +1,11 @@
+@use "../mixins/label";
+
 .label-required::after {
   content: "*";
   color: var(--error);
   margin: 0 0.2rem;
 }
 
-@include label-colors();
+@include label.label-colors();
 
-@include label-sizes();
+@include label.label-sizes();

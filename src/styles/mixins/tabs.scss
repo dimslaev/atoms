@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "../variables";
+
 %tabs {
   display: flex;
   position: relative;
@@ -58,11 +61,11 @@
 
 @mixin tab-sizes() {
   @each $size in sm, md, lg {
-    $py: map-get($button-sizes, $size);
+    $py: map.get(variables.$button-sizes, $size);
     $px: $py * 2;
     $gap: $py * 0.5;
-    $font-size: map-get($btn-font-sizes, $size);
-    $icon-size: map-get($icon-sizes, $size);
+    $font-size: map.get(variables.$btn-font-sizes, $size);
+    $icon-size: map.get(variables.$icon-sizes, $size);
 
     .tab-#{$size}:not(.tab-icon) {
       padding: calc($py - var(--border-width)) $px;
