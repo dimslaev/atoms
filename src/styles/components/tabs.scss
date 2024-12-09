@@ -1,3 +1,5 @@
+@use "../mixins/tabs";
+@use "../mixins/button";
 .tabs {
   @extend %tabs;
 }
@@ -14,6 +16,6 @@
   @extend %button-icon;
 }
 
-@include tab-colors();
+@include tabs.tab-colors();
 
-@include tab-sizes();
+@include tabs.tab-sizes();

@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "../variables";
+
 %checkbox {
   display: flex;
   align-items: center;
@@ -61,11 +64,11 @@
 
 @mixin checkbox-sizes() {
   @each $size in sm, md, lg {
-    $width: map-get($checbox-sizes, $size);
-    $height: map-get($checbox-sizes, $size);
-    $gap: map-get($checbox-gap, $size);
-    $label-font-size: map-get($checbox-label-font-sizes, $size);
-    $icon-size: map-get($icon-sizes, $size);
+    $width: map.get(variables.$checbox-sizes, $size);
+    $height: map.get(variables.$checbox-sizes, $size);
+    $gap: map.get(variables.$checbox-gap, $size);
+    $label-font-size: map.get(variables.$checbox-label-font-sizes, $size);
+    $icon-size: map.get(variables.$icon-sizes, $size);
 
     .checkbox-#{$size} {
       gap: $gap;

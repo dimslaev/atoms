@@ -1,3 +1,5 @@
+@use "../mixins/input";
+
 .select {
   @extend %input;
 }
@@ -10,6 +12,6 @@
   @extend %input-icon;
 }
 
-@include input-colors("select");
+@include input.input-colors("select");
 
-@include input-sizes("select");
+@include input.input-sizes("select");

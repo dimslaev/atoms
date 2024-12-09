@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "../variables";
+
 @mixin radio-colors() {
   .radio input {
     border-color: var(--outline);
@@ -42,11 +45,11 @@
 
 @mixin radio-sizes() {
   @each $size in sm, md, lg {
-    $radio-size: map-get($radio-sizes, $size);
+    $radio-size: map.get(variables.$radio-sizes, $size);
     $before-size: $radio-size - 0.583 * $radio-size;
-    $gap: map-get($radio-gap, $size);
-    $label-font-size: map-get($radio-label-font-sizes, $size);
-    $icon-size: map-get($icon-sizes, $size);
+    $gap: map.get(variables.$radio-gap, $size);
+    $label-font-size: map.get(variables.$radio-label-font-sizes, $size);
+    $icon-size: map.get(variables.$icon-sizes, $size);
 
     .radio-#{$size} {
       gap: $gap;

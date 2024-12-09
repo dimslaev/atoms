@@ -1,3 +1,5 @@
+@use "../mixins/button";
+
 .btn {
   @extend %button;
   border-radius: var(--border-radius);
@@ -13,9 +15,9 @@
   @extend %button-icon;
 }
 
-@include button-colors($selector: btn);
+@include button.button-colors($selector: btn);
 
-@include button-sizes();
+@include button.button-sizes();
 
 .btn-circle {
   border-radius: 100%;

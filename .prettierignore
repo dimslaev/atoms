@@ -3,4 +3,5 @@ dist
 build
 coverage
 *.min.js
-*.d.ts 
+*.d.ts
+*.css

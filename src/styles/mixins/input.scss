@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "../variables";
+
 %input {
   display: flex;
   align-items: center;
@@ -71,10 +74,10 @@
 
 @mixin input-sizes($selector) {
   @each $size in sm, md, lg {
-    $py: map-get($input-sizes, $size);
-    $px: $input-px;
-    $font-size: map-get($input-font-sizes, $size);
-    $icon-size: map-get($icon-sizes, $size);
+    $py: map.get(variables.$input-sizes, $size);
+    $px: variables.$input-px;
+    $font-size: map.get(variables.$input-font-sizes, $size);
+    $icon-size: map.get(variables.$icon-sizes, $size);
     $height: $py * 2 + 2.4rem;
 
     .#{$selector}-#{$size} #{$selector} {

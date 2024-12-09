@@ -1,3 +1,5 @@
+@use "../mixins/card.scss";
+
 .card {
   @extend %card;
 
@@ -21,6 +23,7 @@
 
   &-content {
     @extend %card-content;
+    color: var(--on-surface);
   }
 
   &-actions {

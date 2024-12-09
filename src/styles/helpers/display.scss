@@ -1,4 +1,4 @@
-@import "./_responsive.scss";
+@use "_responsive.scss";
 
 $displays: (
   "block": block,
@@ -6,4 +6,4 @@ $displays: (
   "flex": flex,
 );
 
-@include responsive-helper("d", "display", $displays);
+@include responsive.responsive-helper("d", "display", $displays);

@@ -1,3 +1,5 @@
+@use "../mixins/input";
+
 .textarea {
   @extend %input;
 }
@@ -10,6 +12,6 @@
   @extend %input-icon;
 }
 
-@include input-colors("textarea");
+@include input.input-colors("textarea");
 
-@include input-sizes("textarea");
+@include input.input-sizes("textarea");

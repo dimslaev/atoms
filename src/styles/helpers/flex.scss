@@ -1,4 +1,5 @@
-@import "./_responsive.scss";
+@use "_responsive.scss";
+@use "../variables";
 
 $flex-directions: (
   "row": row,
@@ -18,7 +19,7 @@ $flex-justifies: (
   "between": between,
 );
 
-@include responsive-helper("dir", "flex-direction", $flex-directions);
-@include responsive-helper("align", "align-items", $flex-items);
-@include responsive-helper("justify", "justify-content", $flex-justifies);
-@include responsive-helper("gap", "gap", $spaces);
+@include responsive.responsive-helper("dir", "flex-direction", $flex-directions);
+@include responsive.responsive-helper("align", "align-items", $flex-items);
+@include responsive.responsive-helper("justify", "justify-content", $flex-justifies);
+@include responsive.responsive-helper("gap", "gap", variables.$spaces);
