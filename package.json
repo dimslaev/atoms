@@ -45,7 +45,6 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,json,scss}\"",
     "test": "vitest",
     "coverage": "vitest run --coverage",
-    "prepare": "husky install",
     "precommit": "lint-staged"
   },
   "peerDependencies": {
@@ -58,8 +57,6 @@
   "devDependencies": {
     "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.1",
-    "@testing-library/react": "^16.1.0",
-    "@testing-library/user-event": "^14.5.2",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.1",
     "@typescript-eslint/eslint-plugin": "^8.17.0",
@@ -68,10 +65,8 @@
     "eslint": "^9.16.0",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-testing-library": "^7.1.1",
     "glob": "^11.0.0",
     "husky": ">=9.1.7",
-    "jsdom": "^25.0.1",
     "lint-staged": ">=10",
     "prettier": "^3.4.2",
     "react": "^18.2.0",
@@ -80,6 +75,6 @@
     "sass": "^1.82.0",
     "typescript": "^5.7.2",
     "vite-plugin-dts": "^4.3.0",
-    "vitest": "^2.1.8"
+    "vite": "^6.0.3"
   }
 }
