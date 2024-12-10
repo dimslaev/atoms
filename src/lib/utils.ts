@@ -24,16 +24,25 @@ export const spaceKeys: SpacePrefix[] = [
 ];
 
 export const getHelperClasses = (
-  prefix: HelperPrefix,
+  prefix: HelperPrefix | null,
   value: HelperValue | HelperResposiveValue
 ): string[] => {
   if (typeof value === "string") {
-    return [`${prefix}-${value}`];
+    if (prefix) {
+      return [`${prefix}-${value}`];
+    }
+    return [`${value}`];
   }
   return Object.keys(value).map((bp) => {
     if (bp === "initial") {
-      return `${prefix}-${value[bp as Breakpoint]}`;
+      if (prefix) {
+        return `${prefix}-${value[bp as Breakpoint]}`;
+      }
+      return `${value[bp as Breakpoint]}`;
     }
-    return `${prefix}-${bp}-${value[bp as Breakpoint]}`;
+    if (prefix) {
+      return `${prefix}-${bp}-${value[bp as Breakpoint]}`;
+    }
+    return `${bp}-${value[bp as Breakpoint]}`;
   });
 };

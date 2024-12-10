@@ -1,25 +1,25 @@
 @use "_responsive.scss";
 @use "../variables";
 
-$flex-directions: (
+$flex: (
   "row": row,
   "col": column,
 );
 
-$flex-items: (
+$items: (
   "start": flex-start,
   "center": center,
   "end": flex-end,
 );
 
-$flex-justifies: (
+$justify: (
   "start": flex-start,
   "center": center,
   "end": flex-end,
-  "between": between,
+  "between": space-between,
 );
 
-@include responsive.responsive-helper("dir", "flex-direction", $flex-directions);
-@include responsive.responsive-helper("align", "align-items", $flex-items);
-@include responsive.responsive-helper("justify", "justify-content", $flex-justifies);
-@include responsive.responsive-helper("gap", "gap", variables.$spaces);
+@include responsive.responsive-helper("flex", "flex-direction", $flex, true);
+@include responsive.responsive-helper("items", "align-items", $items, true);
+@include responsive.responsive-helper("justify", "justify-content", $justify, true);
+@include responsive.responsive-helper("gap", "gap", variables.$spaces, true);

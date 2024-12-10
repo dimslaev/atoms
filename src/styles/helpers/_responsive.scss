@@ -1,13 +1,14 @@
 @use "sass:map";
 @use "../variables";
 
-@mixin responsive-helper($prefix, $rule, $map) {
+@mixin responsive-helper($prefix, $rule, $map, $use_prefix: true) {
   @each $bp-key in map.keys(variables.$breakpoints) {
     @if ($bp-key == initial) {
       @each $key in map.keys($map) {
         $value: map.get($map, $key);
 
-        .#{$prefix}-#{$key} {
+        $class_name: if($use_prefix, "#{$prefix}-#{$key}", "#{$key}");
+        .#{$class_name} {
           #{$rule}: $value;
         }
       }
@@ -17,7 +18,8 @@
         @each $key in map.keys($map) {
           $value: map.get($map, $key);
 
-          .#{$prefix}-#{$bp-key}-#{$key} {
+          $class_name: if($use_prefix, "#{$bp-key}:#{$prefix}-#{$key}", "#{$bp-key}:#{$key}");
+          .#{$class_name} {
             #{$rule}: $value;
           }
         }
