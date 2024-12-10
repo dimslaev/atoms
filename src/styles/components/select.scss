@@ -2,21 +2,20 @@
 
 .select {
   @extend %input;
+
+  select {
+    @extend %input-input;
+  }
+
+  option {
+    background-color: var(--surface);
+    color: var(--on-surface);
+  }
+
+  svg {
+    @extend %input-icon;
+  }
+
+  @include input.input-colors("select");
+  @include input.input-sizes("select");
 }
-
-.select select {
-  @extend %input-input;
-}
-
-.select option {
-  background-color: var(--surface);
-  color: var(--on-surface);
-}
-
-.select svg {
-  @extend %input-icon;
-}
-
-@include input.input-colors("select");
-
-@include input.input-sizes("select");

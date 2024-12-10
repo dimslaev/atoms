@@ -1,22 +1,22 @@
 @use "../mixins/button";
 @use "../mixins/chip";
+@use "../mixins/shared";
 
 .chip {
   @extend %button;
+
+  svg {
+    @extend %button-icon;
+  }
+
+  &-label {
+    @extend %button-label;
+  }
+
+  &-btn {
+    @extend %interactive-element;
+  }
+
+  @include button.button-colors($selector: chip);
+  @include chip.chip-sizes();
 }
-
-.chip-label {
-  @extend %button-label;
-}
-
-.chip svg {
-  @extend %button-icon;
-}
-
-.chip-btn {
-  cursor: pointer;
-}
-
-@include button.button-colors($selector: chip);
-
-@include chip.chip-sizes();

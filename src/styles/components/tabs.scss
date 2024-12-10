@@ -1,21 +1,24 @@
 @use "../mixins/tabs";
 @use "../mixins/button";
+@use "../mixins/shared";
+
 .tabs {
   @extend %tabs;
 }
 
 .tab {
+  @extend %inline-flex-center;
+  @extend %interactive-element;
   @extend %tab;
+
+  &-label {
+    @extend %button-label;
+  }
+
+  svg {
+    @extend %button-icon;
+  }
+
+  @include tabs.tab-colors();
+  @include tabs.tab-sizes();
 }
-
-.tab-label {
-  @extend %button-label;
-}
-
-.tab svg {
-  @extend %button-icon;
-}
-
-@include tabs.tab-colors();
-
-@include tabs.tab-sizes();

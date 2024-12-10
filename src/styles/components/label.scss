@@ -2,14 +2,13 @@
 
 .label {
   display: inline-block;
+
+  &-required::after {
+    content: "*";
+    color: var(--error);
+    margin: 0 0.2rem;
+  }
+
+  @include label.label-colors();
+  @include label.label-sizes();
 }
-
-.label-required::after {
-  content: "*";
-  color: var(--error);
-  margin: 0 0.2rem;
-}
-
-@include label.label-colors();
-
-@include label.label-sizes();

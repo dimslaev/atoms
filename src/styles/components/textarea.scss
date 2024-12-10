@@ -2,16 +2,15 @@
 
 .textarea {
   @extend %input;
+
+  textarea {
+    @extend %input-input;
+  }
+
+  svg {
+    @extend %input-icon;
+  }
+
+  @include input.input-colors("textarea");
+  @include input.input-sizes("textarea");
 }
-
-.textarea textarea {
-  @extend %input-input;
-}
-
-.textarea svg {
-  @extend %input-icon;
-}
-
-@include input.input-colors("textarea");
-
-@include input.input-sizes("textarea");

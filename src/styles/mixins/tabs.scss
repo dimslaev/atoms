@@ -17,41 +17,31 @@
 }
 
 %tab {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
   white-space: nowrap;
-  user-select: none;
-  cursor: pointer;
-
   border: var(--border-width) solid transparent;
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
-
   font-family: var(--font-family-1);
   font-weight: 500;
   line-height: 2.4rem;
-
-  transition: all var(--motion-time-sm) ease-in-out;
 }
 
 @mixin tab-colors {
-  .tab:not(.tab-active, .tab-disabled) {
+  &:not(&-active, &-disabled) {
     color: var(--text-primary);
+
+    &:hover {
+      color: var(--primary);
+    }
   }
 
-  .tab:not(.tab-active, .tab-disabled):hover {
-    color: var(--primary);
-  }
-
-  .tab-active {
+  &-active {
     color: var(--on-primary);
     background-color: var(--primary);
     border-color: var(--primary);
   }
 
-  .tab-disabled {
+  &-disabled {
     color: var(--action-disabled-text);
     background-color: var(--action-disabled-background);
     border-color: var(--action-disabled-background);
@@ -67,23 +57,25 @@
     $font-size: map.get(variables.$btn-font-sizes, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
 
-    .tab-#{$size}:not(.tab-icon) {
-      padding: calc($py - var(--border-width)) $px;
-      font-size: $font-size;
-    }
+    &-#{$size} {
+      &:not(.tab-icon) {
+        padding: calc($py - var(--border-width)) $px;
+        font-size: $font-size;
 
-    .tab-#{$size}:not(.tab-icon).tab-w-start {
-      gap: $gap;
-      padding-left: calc($px - $gap);
-    }
+        &.tab-w-start {
+          gap: $gap;
+          padding-left: calc($px - $gap);
+        }
 
-    .tab-#{$size}:not(.tab-icon).tab-w-end {
-      gap: $gap;
-      padding-right: calc($px - $gap);
-    }
+        &.tab-w-end {
+          gap: $gap;
+          padding-right: calc($px - $gap);
+        }
+      }
 
-    .tab-#{$size}.tab-icon {
-      padding: calc($py - var(--border-width) + (2.4rem - $icon-size) / 2);
+      &.tab-icon {
+        padding: calc($py - var(--border-width) + (2.4rem - $icon-size) / 2);
+      }
     }
   }
 }

@@ -1,9 +1,8 @@
 @use "../mixins/card.scss";
+@use "../mixins/shared";
 
 .dialog {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-center;
 
   position: fixed;
   z-index: 9999;

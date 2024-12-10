@@ -2,18 +2,18 @@
 @use "../variables";
 
 @mixin label-colors() {
-  .label {
-    color: var(--text-primary);
+  color: var(--text-primary);
+
+  &-error {
+    color: var(--error);
   }
 
-  @each $color in error, success {
-    .label-#{$color} {
-      color: var(--#{$color});
-    }
+  &-success {
+    color: var(--success);
+  }
 
-    .label-disabled {
-      color: var(--action-disabled-text);
-    }
+  &-disabled {
+    color: var(--action-disabled-text);
   }
 }
 
@@ -21,7 +21,7 @@
   @each $size in sm, md, lg {
     $label-font-size: map.get(variables.$btn-font-sizes, $size);
 
-    .label-#{$size} {
+    &-#{$size} {
       font-size: $label-font-size;
     }
   }

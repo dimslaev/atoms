@@ -1,33 +1,29 @@
 @use "../mixins/radio";
 @use "../mixins/checkbox";
-
+@use "../mixins/shared";
 .radio {
+  @extend %interactive-element;
   @extend %checkbox;
+
+  input {
+    @extend %checkbox-input;
+    border-radius: 100%;
+
+    &:checked::before {
+      position: absolute;
+      display: block;
+      content: "";
+      border-radius: 100%;
+    }
+  }
+
+  &-disabled {
+    &,
+    & > * {
+      cursor: not-allowed;
+    }
+  }
+
+  @include radio.radio-colors();
+  @include radio.radio-sizes();
 }
-
-.radio input {
-  @extend %checkbox-input;
-  border-radius: 100%;
-}
-
-.radio input:checked::before {
-  position: absolute;
-  display: block;
-  content: "";
-  border-radius: 100%;
-}
-
-.radio:not(.radio-disabled),
-.radio:not(.radio-disabled) > * {
-  cursor: pointer;
-  transition: all var(--motion-time-sm);
-}
-
-@include radio.radio-colors();
-
-.radio-disabled,
-.radio-disabled > * {
-  cursor: not-allowed;
-}
-
-@include radio.radio-sizes();

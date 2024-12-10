@@ -2,16 +2,15 @@
 
 .input {
   @extend %input;
+
+  input {
+    @extend %input-input;
+  }
+
+  svg {
+    @extend %input-icon;
+  }
+
+  @include input.input-colors("input");
+  @include input.input-sizes("input");
 }
-
-.input input {
-  @extend %input-input;
-}
-
-.input svg {
-  @extend %input-icon;
-}
-
-@include input.input-colors("input");
-
-@include input.input-sizes("input");

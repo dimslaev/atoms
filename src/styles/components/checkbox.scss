@@ -1,35 +1,32 @@
 @use "../mixins/checkbox";
+@use "../mixins/shared";
 
 .checkbox {
+  @extend %interactive-element;
   @extend %checkbox;
+
+  input {
+    @extend %checkbox-input;
+    border-radius: var(--border-radius);
+
+    &:not(:checked) + svg {
+      display: none;
+    }
+
+    &:checked + svg {
+      display: block;
+      position: absolute;
+      pointer-events: none;
+    }
+  }
+
+  &-disabled {
+    &,
+    & > * {
+      cursor: not-allowed;
+    }
+  }
+
+  @include checkbox.checkbox-colors();
+  @include checkbox.checkbox-sizes();
 }
-
-.checkbox input {
-  @extend %checkbox-input;
-  border-radius: var(--border-radius);
-}
-
-.checkbox input:not(:checked) + svg {
-  display: none;
-}
-
-.checkbox input:checked + svg {
-  display: block;
-  position: absolute;
-  pointer-events: none;
-}
-
-.checkbox:not(.checkbox-disabled),
-.checkbox:not(.checkbox-disabled) > * {
-  cursor: pointer;
-  transition: all var(--motion-time-sm);
-}
-
-@include checkbox.checkbox-colors();
-
-.checkbox-disabled,
-.checkbox-disabled > * {
-  cursor: not-allowed;
-}
-
-@include checkbox.checkbox-sizes();

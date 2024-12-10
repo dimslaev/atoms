@@ -81,6 +81,38 @@ const rows: ChipProps[][] = [
       disabled: true,
     }))
   ),
+
+  ...defaultChips.map((row) =>
+    row.map((col) => ({
+      ...col,
+      onClick: () => null,
+      endIcon: <Icon path={mdiCloseCircle} size={col.size} />,
+    }))
+  ),
+  ...defaultChips.map((row) =>
+    row.map((col) => ({
+      ...col,
+      color: "success" as const,
+      onClick: () => null,
+      endIcon: <Icon path={mdiCloseCircle} size={col.size} />,
+    }))
+  ),
+  ...defaultChips.map((row) =>
+    row.map((col) => ({
+      ...col,
+      color: "error" as const,
+      onClick: () => null,
+      endIcon: <Icon path={mdiCloseCircle} size={col.size} />,
+    }))
+  ),
+  ...defaultChips.map((row) =>
+    row.map((col) => ({
+      ...col,
+      onClick: () => null,
+      endIcon: <Icon path={mdiCloseCircle} size={col.size} />,
+      disabled: true,
+    }))
+  ),
 ];
 
 const rowsOutlined: ChipProps[][] = rows.map((row) =>

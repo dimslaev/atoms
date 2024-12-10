@@ -1,30 +1,30 @@
 @use "../mixins/button";
+@use "../mixins/shared";
 
 .btn {
+  @extend %interactive-element;
   @extend %button;
   border-radius: var(--border-radius);
   text-decoration: none;
-  cursor: pointer;
-}
 
-.btn-label {
-  @extend %button-label;
-}
+  svg {
+    @extend %button-icon;
+  }
 
-.btn svg {
-  @extend %button-icon;
-}
+  &-label {
+    @extend %button-label;
+  }
 
-@include button.button-colors($selector: btn);
+  &-circle {
+    border-radius: 100%;
+  }
 
-@include button.button-sizes();
+  &-loading {
+    animation: loading-animation 1s linear infinite;
+  }
 
-.btn-circle {
-  border-radius: 100%;
-}
-
-.btn-loading {
-  animation: loading-animation 1s linear infinite;
+  @include button.button-colors($selector: btn);
+  @include button.button-sizes();
 }
 
 @keyframes loading-animation {
@@ -34,7 +34,7 @@
   50% {
     opacity: 0.5;
   }
-  0% {
+  100% {
     opacity: 1;
   }
 }

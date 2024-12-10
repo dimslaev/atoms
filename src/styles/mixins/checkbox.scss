@@ -16,41 +16,43 @@
 }
 
 @mixin checkbox-colors() {
-  .checkbox input {
+  input {
     border-color: var(--outline);
-  }
 
-  .checkbox input:checked {
-    border-color: var(--primary);
-    background-color: var(--primary);
-  }
+    &:checked {
+      border-color: var(--primary);
+      background-color: var(--primary);
 
-  .checkbox input:checked + svg {
-    color: var(--on-primary);
+      & + svg {
+        color: var(--on-primary);
+      }
+    }
   }
 
   @each $color in error, success {
-    .checkbox-#{$color} input,
-    .checkbox-#{$color} input:checked {
+    &-#{$color} input {
       border-color: var(--#{$color});
+
+      &:checked {
+        border-color: var(--#{$color});
+        background-color: var(--#{$color});
+      }
     }
+  }
 
-    .checkbox-#{$color} input:checked {
-      background-color: var(--#{$color});
+  &-disabled {
+    input {
+      border-color: var(--outline);
+
+      &:checked {
+        background-color: var(--outline);
+        border-color: var(--outline);
+
+        & + svg {
+          color: var(--on-primary);
+        }
+      }
     }
-  }
-
-  .checkbox-disabled input,
-  .checkbox-disabled input:checked {
-    border-color: var(--outline);
-  }
-
-  .checkbox-disabled input:checked {
-    background-color: var(--outline);
-  }
-
-  .checkbox-disabled input:checked + svg {
-    color: var(--on-primary);
   }
 }
 
@@ -61,17 +63,17 @@
     $gap: map.get(variables.$checbox-gap, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
 
-    .checkbox-#{$size} {
+    &-#{$size} {
       gap: $gap;
-    }
 
-    .checkbox-#{$size} input {
-      width: $width;
-      height: $height;
-    }
+      input {
+        width: $width;
+        height: $height;
 
-    .checkbox-#{$size} input + svg {
-      left: calc(($width - $icon-size) / 2);
+        & + svg {
+          left: calc(($width - $icon-size) / 2);
+        }
+      }
     }
   }
 }

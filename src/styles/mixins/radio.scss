@@ -2,36 +2,42 @@
 @use "../variables";
 
 @mixin radio-colors() {
-  .radio input {
+  input {
     border-color: var(--outline);
-  }
 
-  .radio input:checked {
-    border-color: var(--primary);
-  }
+    &:checked {
+      border-color: var(--primary);
 
-  .radio input:checked::before {
-    background-color: var(--primary);
+      &::before {
+        background-color: var(--primary);
+      }
+    }
   }
 
   @each $color in error, success {
-    .radio-#{$color} input,
-    .radio-#{$color} input:checked {
+    &-#{$color} input {
       border-color: var(--#{$color});
-    }
 
-    .radio-#{$color} input:checked::before {
-      background-color: var(--#{$color});
+      &:checked {
+        border-color: var(--#{$color});
+
+        &::before {
+          background-color: var(--#{$color});
+        }
+      }
     }
   }
 
-  .radio-disabled input,
-  .radio-disabled input:checked {
+  &-disabled input {
     border-color: var(--outline);
-  }
 
-  .radio-disabled input:checked::before {
-    background-color: var(--outline);
+    &:checked {
+      border-color: var(--outline);
+
+      &::before {
+        background-color: var(--outline);
+      }
+    }
   }
 }
 
@@ -42,18 +48,18 @@
     $gap: map.get(variables.$radio-gap, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
 
-    .radio-#{$size} {
+    &-#{$size} {
       gap: $gap;
-    }
 
-    .radio-#{$size} input {
-      width: $radio-size;
-      height: $radio-size;
-    }
+      input {
+        width: $radio-size;
+        height: $radio-size;
 
-    .radio-#{$size} input::before {
-      width: $before-size;
-      height: $before-size;
+        &::before {
+          width: $before-size;
+          height: $before-size;
+        }
+      }
     }
   }
 }
