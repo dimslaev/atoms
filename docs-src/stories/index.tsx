@@ -1,4 +1,4 @@
-export * as base from "./base.stories";
+export * as box from "./box.stories";
 export * as button from "./button.stories";
 export * as card from "./card.stories";
 export * as checkbox from "./checkbox.stories";
@@ -13,3 +13,4 @@ export * as select from "./select.stories";
 export * as tabs from "./tabs.stories";
 export * as text from "./text.stories";
 export * as textarea from "./textarea.stories";
+export * as examples from "./examples.stories";

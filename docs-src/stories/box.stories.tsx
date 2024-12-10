@@ -1,7 +1,7 @@
-import { BaseComponent, BaseComponentProps } from "../../src/components/base";
+import { Box, BoxProps } from "../../src/components/box";
 import { Container } from "../components/story-container";
 
-const marginRows: BaseComponentProps[][] = [
+const marginRows: BoxProps[][] = [
   [
     {
       children: "mt-4",
@@ -34,7 +34,7 @@ const marginRows: BaseComponentProps[][] = [
   ],
 ];
 
-const paddingRows: BaseComponentProps[][] = [
+const paddingRows: BoxProps[][] = [
   [
     {
       children: "pt-4",
@@ -63,6 +63,43 @@ const paddingRows: BaseComponentProps[][] = [
   ],
 ];
 
+const horizontalMarginAutoRows: BoxProps[][] = [
+  [
+    {
+      display: "block",
+      children: "ml-auto",
+      ml: "auto",
+    },
+    {
+      display: "block",
+      children: "mr-auto",
+      mr: "auto",
+    },
+    {
+      display: "block",
+      children: "mx-auto",
+      mx: "auto",
+    },
+  ],
+];
+
+const verticalMarginAutoRows: BoxProps[][] = [
+  [
+    {
+      children: "mt-auto",
+      mt: "auto",
+    },
+    {
+      children: "mb-auto",
+      mb: "auto",
+    },
+    {
+      children: "my-auto",
+      my: "auto",
+    },
+  ],
+];
+
 export function Default() {
   const margins = marginRows.map((row, index) => (
     <Container
@@ -78,7 +115,71 @@ export function Default() {
               "repeating-linear-gradient(45deg, transparent,var(--on-primary) 4px,var(--blue-800) 4px,var(--blue-800) 8px)",
           }}
         >
-          <BaseComponent
+          <Box
+            {...col}
+            style={{
+              background: "var(--primary)",
+              color: "var(--on-primary)",
+              padding: "0.4rem",
+            }}
+          />
+        </div>
+      ))}
+    </Container>
+  ));
+  const horizontalMarginAutos = horizontalMarginAutoRows.map((row, index) => (
+    <Container
+      key={`margin-auto-horizontal-${index}`}
+      title="margin auto horizontal"
+      rowStyle={{
+        background: "var(--primary-subdued)",
+        padding: "1rem 2rem",
+      }}
+    >
+      {row.map((col, colIndex) => (
+        <div
+          key={`margin-auto-horizontal-${index}-${colIndex}`}
+          style={{
+            background:
+              "repeating-linear-gradient(45deg, transparent,var(--on-primary) 4px,var(--blue-800) 4px,var(--blue-800) 8px)",
+            flex: 1,
+            display: "flex",
+          }}
+        >
+          <Box
+            {...col}
+            style={{
+              background: "var(--primary)",
+              color: "var(--on-primary)",
+              padding: "0.4rem",
+            }}
+          />
+        </div>
+      ))}
+    </Container>
+  ));
+  const verticalMarginAutos = verticalMarginAutoRows.map((row, index) => (
+    <Container
+      key={`margin-auto-vertical-${index}`}
+      title="margin auto vertical"
+      rowStyle={{
+        background: "var(--primary-subdued)",
+        padding: "1rem 2rem",
+        height: "200px",
+      }}
+    >
+      {row.map((col, colIndex) => (
+        <div
+          key={`margin-auto-vertical-${index}-${colIndex}`}
+          style={{
+            background:
+              "repeating-linear-gradient(45deg, transparent,var(--on-primary) 4px,var(--blue-800) 4px,var(--blue-800) 8px)",
+
+            display: "flex",
+            height: "100%",
+          }}
+        >
+          <Box
             {...col}
             style={{
               background: "var(--primary)",
@@ -104,14 +205,14 @@ export function Default() {
               "repeating-linear-gradient(45deg, transparent,var(--on-primary) 4px,var(--primary) 4px,var(--primary) 8px)",
           }}
         >
-          <BaseComponent
+          <Box
             {...col}
             style={{
               // background: "var(--primary)",
               color: "var(--on-primary)",
             }}
           >
-            <BaseComponent
+            <Box
               style={{
                 background: "var(--primary)",
                 color: "var(--on-primary)",
@@ -119,8 +220,8 @@ export function Default() {
               }}
             >
               {children}
-            </BaseComponent>
-          </BaseComponent>
+            </Box>
+          </Box>
         </div>
       ))}
     </Container>
@@ -130,7 +231,7 @@ export function Default() {
       title="horizontal gap"
       rowStyle={{ background: "var(--primary-subdued)", padding: "1rem 2rem" }}
     >
-      <BaseComponent
+      <Box
         display="flex"
         gap="4"
         style={{
@@ -139,7 +240,7 @@ export function Default() {
         }}
       >
         {[1, 2, 3, 4].map((index) => (
-          <BaseComponent
+          <Box
             key={`hor-gap-${index}`}
             style={{
               background: "var(--primary)",
@@ -147,10 +248,10 @@ export function Default() {
               padding: "0.4rem",
             }}
           >
-            BaseComponent
-          </BaseComponent>
+            Box
+          </Box>
         ))}
-      </BaseComponent>
+      </Box>
     </Container>
   );
   const verticalGap = (
@@ -158,9 +259,9 @@ export function Default() {
       title="vertical gap"
       rowStyle={{ background: "var(--primary-subdued)", padding: "1rem 2rem" }}
     >
-      <BaseComponent
+      <Box
         display="flex"
-        direction="col"
+        flex="col"
         gap="4"
         style={{
           background:
@@ -168,7 +269,7 @@ export function Default() {
         }}
       >
         {[1, 2, 3, 4].map((index) => (
-          <BaseComponent
+          <Box
             key={`ver-gap-${index}`}
             style={{
               background: "var(--primary)",
@@ -176,10 +277,10 @@ export function Default() {
               padding: "0.4rem",
             }}
           >
-            BaseComponent
-          </BaseComponent>
+            Box
+          </Box>
         ))}
-      </BaseComponent>
+      </Box>
     </Container>
   );
   const horizontalAlign = (
@@ -191,26 +292,26 @@ export function Default() {
         display: "block",
       }}
     >
-      <BaseComponent display="flex" align="center" gap="4">
-        <BaseComponent
+      <Box display="flex" items="center" gap="4">
+        <Box
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0 0.4rem",
           }}
         >
-          BaseComponent
-        </BaseComponent>
-        <BaseComponent
+          Box
+        </Box>
+        <Box
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          BaseComponent
-        </BaseComponent>
-      </BaseComponent>
+          Box
+        </Box>
+      </Box>
     </Container>
   );
   const horizontalJustify = (
@@ -222,26 +323,26 @@ export function Default() {
         display: "block",
       }}
     >
-      <BaseComponent display="flex" justify="center" gap="4">
-        <BaseComponent
+      <Box display="flex" justify="center" gap="4">
+        <Box
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          BaseComponent
-        </BaseComponent>
-        <BaseComponent
+          Box
+        </Box>
+        <Box
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          BaseComponent
-        </BaseComponent>
-      </BaseComponent>
+          Box
+        </Box>
+      </Box>
     </Container>
   );
   const verticalAlign = (
@@ -253,26 +354,26 @@ export function Default() {
         display: "block",
       }}
     >
-      <BaseComponent display="flex" direction="col" align="center" gap="4">
-        <BaseComponent
+      <Box display="flex" flex="col" items="center" gap="4">
+        <Box
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          BaseComponent
-        </BaseComponent>
-        <BaseComponent
+          Box
+        </Box>
+        <Box
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          BaseComponent
-        </BaseComponent>
-      </BaseComponent>
+          Box
+        </Box>
+      </Box>
     </Container>
   );
   const verticalJustify = (
@@ -285,38 +386,34 @@ export function Default() {
         display: "block",
       }}
     >
-      <BaseComponent
-        display="flex"
-        direction="col"
-        justify="end"
-        gap="4"
-        style={{ height: "100%" }}
-      >
-        <BaseComponent
+      <Box display="flex" flex="col" justify="center" gap="4" style={{ height: "100%" }}>
+        <Box
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          BaseComponent
-        </BaseComponent>
-        <BaseComponent
+          Box
+        </Box>
+        <Box
           style={{
             background: "var(--primary)",
             color: "var(--on-primary)",
             padding: "0.4rem",
           }}
         >
-          BaseComponent
-        </BaseComponent>
-      </BaseComponent>
+          Box
+        </Box>
+      </Box>
     </Container>
   );
 
   return (
     <>
       {margins}
+      {horizontalMarginAutos}
+      {verticalMarginAutos}
       {paddings}
       {horizontalGap}
       {verticalGap}

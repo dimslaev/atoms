@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Dialog, DialogTitle, DialogContent, DialogActions } from "../../src/components/dialog";
 import { Text } from "../../src/components/text";
-import { Button } from "../../src/components//button";
+import { Button } from "../../src/components/button";
 
 export function Default() {
   const [open, setOpen] = useState(false);
