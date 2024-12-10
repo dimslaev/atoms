@@ -30,10 +30,6 @@
   }
 
   @each $color in error, success {
-    .checkbox-#{$color} label {
-      color: var(--#{$color});
-    }
-
     .checkbox-#{$color} input,
     .checkbox-#{$color} input:checked {
       border-color: var(--#{$color});
@@ -42,10 +38,6 @@
     .checkbox-#{$color} input:checked {
       background-color: var(--#{$color});
     }
-  }
-
-  .checkbox-disabled label {
-    color: var(--action-disabled-text);
   }
 
   .checkbox-disabled input,
@@ -67,15 +59,10 @@
     $width: map.get(variables.$checbox-sizes, $size);
     $height: map.get(variables.$checbox-sizes, $size);
     $gap: map.get(variables.$checbox-gap, $size);
-    $label-font-size: map.get(variables.$checbox-label-font-sizes, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
 
     .checkbox-#{$size} {
       gap: $gap;
-    }
-
-    .checkbox-#{$size} label {
-      font-size: $label-font-size;
     }
 
     .checkbox-#{$size} input {

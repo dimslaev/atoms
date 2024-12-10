@@ -1,8 +1,9 @@
 import { InputHTMLAttributes } from "react";
 import { Icon } from "./icon";
 import { mdiCheck } from "@mdi/js";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
+import { Label } from "./label";
 
 export interface CheckboxProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
@@ -13,7 +14,7 @@ export interface CheckboxProps
   disabled?: boolean;
 }
 
-const CheckboxBase = createBaseComponent<CheckboxProps>({}, "div");
+const CheckboxBase = createBox<CheckboxProps>({}, "div");
 
 export const Checkbox = ({
   size = "md",
@@ -24,7 +25,7 @@ export const Checkbox = ({
   label = "",
   className,
   ...props
-}: CombineBaseProps<CheckboxProps>) => {
+}: CombineBoxProps<CheckboxProps>) => {
   const classes = cn({
     checkbox: true,
     [`checkbox-${size}`]: true,
@@ -38,7 +39,11 @@ export const Checkbox = ({
     <CheckboxBase className={classes}>
       <input id={id} type="checkbox" disabled={disabled} {...props} />
       <Icon path={mdiCheck} size={size} />
-      {label && <label htmlFor={id}>{label}</label>}
+      {label && (
+        <Label htmlFor={id} size={size} error={error} success={success} disabled={disabled}>
+          {label}
+        </Label>
+      )}
     </CheckboxBase>
   );
 };

@@ -1,12 +1,12 @@
 import { HTMLAttributes } from "react";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
-export interface DividerProps extends HTMLAttributes<HTMLHRElement> {}
+export type DividerProps = HTMLAttributes<HTMLHRElement>;
 
-const DividerBase = createBaseComponent<DividerProps>({}, "hr");
+const DividerBase = createBox<DividerProps>({}, "hr");
 
-export const Divider = ({ className, ...props }: CombineBaseProps<DividerProps>) => {
+export const Divider = ({ className, ...props }: CombineBoxProps<DividerProps>) => {
   return (
     <DividerBase
       className={cn({

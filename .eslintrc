@@ -4,9 +4,10 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
   ],
   "ignorePatterns": ["dist", ".eslintrc.cjs"],
+  "ignores": ["node_modules/", "dist/", "build/", "coverage/", "*.config.js", "*.config.ts"],
   "parser": "@typescript-eslint/parser",
   "plugins": [],
   "rules": {}

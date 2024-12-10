@@ -10,6 +10,10 @@
     .label-#{$color} {
       color: var(--#{$color});
     }
+
+    .label-disabled {
+      color: var(--action-disabled-text);
+    }
   }
 }
 

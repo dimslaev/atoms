@@ -1,5 +1,5 @@
 import { useRef, HTMLAttributes } from "react";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
 export interface DialogProps extends HTMLAttributes<HTMLDivElement> {
@@ -7,7 +7,7 @@ export interface DialogProps extends HTMLAttributes<HTMLDivElement> {
   innerClassName?: string;
 }
 
-const DialogBase = createBaseComponent<DialogProps>();
+const DialogBase = createBox<DialogProps>();
 
 export const Dialog = ({
   className,
@@ -15,7 +15,7 @@ export const Dialog = ({
   onClose,
   children,
   ...props
-}: CombineBaseProps<DialogProps>) => {
+}: CombineBoxProps<DialogProps>) => {
   const ref = useRef(null);
   const onClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.target === ref.current && onClose) {
@@ -47,9 +47,9 @@ export const Dialog = ({
 
 type DialogContentProps = HTMLAttributes<HTMLDivElement>;
 
-const DialogContentBase = createBaseComponent<DialogContentProps>();
+const DialogContentBase = createBox<DialogContentProps>();
 
-export const DialogContent = ({ className, ...props }: CombineBaseProps<DialogContentProps>) => {
+export const DialogContent = ({ className, ...props }: CombineBoxProps<DialogContentProps>) => {
   return (
     <DialogContentBase
       className={cn({
@@ -63,9 +63,9 @@ export const DialogContent = ({ className, ...props }: CombineBaseProps<DialogCo
 
 type DialogTitleProps = HTMLAttributes<HTMLDivElement>;
 
-const DialogTitleBase = createBaseComponent<DialogTitleProps>();
+const DialogTitleBase = createBox<DialogTitleProps>();
 
-export const DialogTitle = ({ className, ...props }: CombineBaseProps<DialogTitleProps>) => {
+export const DialogTitle = ({ className, ...props }: CombineBoxProps<DialogTitleProps>) => {
   return (
     <DialogTitleBase
       className={cn({
@@ -79,9 +79,9 @@ export const DialogTitle = ({ className, ...props }: CombineBaseProps<DialogTitl
 
 type DialogActionsProps = HTMLAttributes<HTMLDivElement>;
 
-const DialogActionsBase = createBaseComponent<DialogActionsProps>();
+const DialogActionsBase = createBox<DialogActionsProps>();
 
-export const DialogActions = ({ className, ...props }: CombineBaseProps<DialogActionsProps>) => {
+export const DialogActions = ({ className, ...props }: CombineBoxProps<DialogActionsProps>) => {
   return (
     <DialogActionsBase
       className={cn({

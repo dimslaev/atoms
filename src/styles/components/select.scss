@@ -8,6 +8,11 @@
   @extend %input-input;
 }
 
+.select option {
+  background-color: var(--surface);
+  color: var(--on-surface);
+}
+
 .select svg {
   @extend %input-icon;
 }

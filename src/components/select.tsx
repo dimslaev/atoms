@@ -1,7 +1,7 @@
 import { SelectHTMLAttributes, ReactNode, forwardRef } from "react";
 import { Icon } from "./icon";
 import { mdiMenuDown } from "@mdi/js";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
 export interface SelectOption {
@@ -19,9 +19,9 @@ export interface SelectProps
   startIcon?: ReactNode;
 }
 
-const SelectBase = createBaseComponent<Omit<SelectProps, "options">>({}, "div");
+const SelectBase = createBox<Omit<SelectProps, "options">>({}, "div");
 
-export const Select = forwardRef<HTMLSelectElement, CombineBaseProps<SelectProps>>(
+export const Select = forwardRef<HTMLSelectElement, CombineBoxProps<SelectProps>>(
   (
     {
       size = "md",

@@ -1,5 +1,5 @@
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
@@ -16,9 +16,9 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnch
   endIcon?: ReactNode;
 }
 
-export type CombinedButtonProps = CombineBaseProps<ButtonProps>;
+export type CombinedButtonProps = CombineBoxProps<ButtonProps>;
 
-const ButtonBase = createBaseComponent<ButtonProps>({}, "button");
+const ButtonBase = createBox<ButtonProps>({}, "button");
 
 export const Button = forwardRef<HTMLElement, CombinedButtonProps>((props, ref) => {
   const {

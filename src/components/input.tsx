@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
@@ -12,9 +12,9 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   endIcon?: ReactNode;
 }
 
-const InputBase = createBaseComponent<InputProps>({}, "div");
+const InputBase = createBox<InputProps>({}, "div");
 
-export const Input = forwardRef<HTMLInputElement, CombineBaseProps<InputProps>>(
+export const Input = forwardRef<HTMLInputElement, CombineBoxProps<InputProps>>(
   (
     {
       size = "md",

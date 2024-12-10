@@ -1,4 +1,4 @@
-export { BaseComponent } from "./components/base";
+export { Box } from "./components/box";
 export { Button } from "./components/button";
 export { Card } from "./components/card";
 export { Checkbox } from "./components/checkbox";
@@ -13,11 +13,3 @@ export { Select } from "./components/select";
 export { Tabs } from "./components/tabs";
 export { Text } from "./components/text";
 export { Textarea } from "./components/textarea";
-
-// export { Alert } from "./components/avatar";
-// export { Avatar } from "./components/avatar";
-// export { Menu } from "./components/menu";
-// export { Nav } from "./components/nav";
-// export { Switch } from "./components/switch";
-// export { Table } from "./components/table";
-// export { Tooltip } from "./components/tooltip";

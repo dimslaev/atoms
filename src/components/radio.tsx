@@ -1,6 +1,7 @@
 import { InputHTMLAttributes, forwardRef } from "react";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
+import { Label } from "./label";
 
 export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
   label?: string;
@@ -10,9 +11,9 @@ export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   disabled?: boolean;
 }
 
-const RadioBase = createBaseComponent<RadioProps>({}, "div");
+const RadioBase = createBox<RadioProps>({}, "div");
 
-export const Radio = forwardRef<HTMLInputElement, CombineBaseProps<RadioProps>>(
+export const Radio = forwardRef<HTMLInputElement, CombineBoxProps<RadioProps>>(
   (
     {
       size = "md",
@@ -38,7 +39,11 @@ export const Radio = forwardRef<HTMLInputElement, CombineBaseProps<RadioProps>>(
     return (
       <RadioBase className={classes}>
         <input ref={ref} id={id} type="radio" disabled={disabled} {...props} />
-        {label && <label htmlFor={id}>{label}</label>}
+        {label && (
+          <Label htmlFor={id} size={size} error={error} success={success} disabled={disabled}>
+            {label}
+          </Label>
+        )}
       </RadioBase>
     );
   }

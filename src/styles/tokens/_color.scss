@@ -85,7 +85,7 @@
   --action-disabled-text: var(--gray-500);
   --action-disabled-background: var(--gray-700);
   --surface: var(--gray-900);
-  --on-surface: var(--black);
+  --on-surface: var(--gray-100);
   --on-surface-variant: var(--gray-400);
   --outline: var(--gray-600);
   --success: var(--green-400);
@@ -93,9 +93,9 @@
   --success-pressed: var(--green-500);
   --success-subdued: var(--green-900);
   --on-success: var(--black);
-  --error: var(--red-400);
-  --error-hover: var(--red-300);
-  --error-pressed: var(--red-500);
+  --error: var(--red-500);
+  --error-hover: var(--red-400);
+  --error-pressed: var(--red-600);
   --error-subdued: var(--red-900);
   --on-error: var(--black);
 }

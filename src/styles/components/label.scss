@@ -1,5 +1,9 @@
 @use "../mixins/label";
 
+.label {
+  display: inline-block;
+}
+
 .label-required::after {
   content: "*";
   color: var(--error);

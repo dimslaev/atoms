@@ -1,5 +1,5 @@
 import { TextareaHTMLAttributes, ReactNode, forwardRef } from "react";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
 export interface TextareaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "size"> {
@@ -11,9 +11,9 @@ export interface TextareaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaE
   endIcon?: ReactNode;
 }
 
-const TextareaWrapper = createBaseComponent<TextareaProps>({}, "div");
+const TextareaWrapper = createBox<TextareaProps>({}, "div");
 
-export const Textarea = forwardRef<HTMLTextAreaElement, CombineBaseProps<TextareaProps>>(
+export const Textarea = forwardRef<HTMLTextAreaElement, CombineBoxProps<TextareaProps>>(
   (
     {
       size = "md",

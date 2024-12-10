@@ -1,5 +1,5 @@
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
 export interface ChipProps extends HTMLAttributes<HTMLDivElement> {
@@ -13,9 +13,9 @@ export interface ChipProps extends HTMLAttributes<HTMLDivElement> {
   endIcon?: ReactNode;
 }
 
-const ChipBase = createBaseComponent<Omit<ChipProps, "label">>({}, "div");
+const ChipBase = createBox<Omit<ChipProps, "label">>({}, "div");
 
-export const Chip = forwardRef<HTMLDivElement, CombineBaseProps<ChipProps>>(
+export const Chip = forwardRef<HTMLDivElement, CombineBoxProps<ChipProps>>(
   (
     {
       size = "md",

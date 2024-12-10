@@ -1,14 +1,14 @@
 import { HTMLAttributes, ReactNode } from "react";
-import { createBaseComponent, type CombineBaseProps } from "./base";
+import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
 export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-const TabsBase = createBaseComponent<TabsProps>();
+const TabsBase = createBox<TabsProps>();
 
-export const Tabs = ({ className, ...props }: CombineBaseProps<TabsProps>) => {
+export const Tabs = ({ className, ...props }: CombineBoxProps<TabsProps>) => {
   return (
     <TabsBase
       className={cn({
@@ -29,7 +29,7 @@ interface TabProps extends HTMLAttributes<HTMLButtonElement> {
   endIcon?: ReactNode;
 }
 
-const TabBase = createBaseComponent<TabProps>({}, "button");
+const TabBase = createBox<TabProps>({}, "button");
 
 export const Tab = ({
   size = "md",
@@ -38,9 +38,10 @@ export const Tab = ({
   iconOnly = false,
   startIcon,
   endIcon,
+  children,
   className,
   ...props
-}: CombineBaseProps<TabProps>) => {
+}: CombineBoxProps<TabProps>) => {
   return (
     <TabBase
       className={cn({
@@ -54,6 +55,10 @@ export const Tab = ({
         [className!]: !!className,
       })}
       {...props}
-    />
+    >
+      {startIcon}
+      <div className="tab-label">{children}</div>
+      {endIcon}
+    </TabBase>
   );
 };

@@ -15,10 +15,6 @@
   }
 
   @each $color in error, success {
-    .radio-#{$color} label {
-      color: var(--#{$color});
-    }
-
     .radio-#{$color} input,
     .radio-#{$color} input:checked {
       border-color: var(--#{$color});
@@ -27,10 +23,6 @@
     .radio-#{$color} input:checked::before {
       background-color: var(--#{$color});
     }
-  }
-
-  .radio-disabled label {
-    color: var(--action-disabled-text);
   }
 
   .radio-disabled input,
@@ -48,15 +40,10 @@
     $radio-size: map.get(variables.$radio-sizes, $size);
     $before-size: $radio-size - 0.583 * $radio-size;
     $gap: map.get(variables.$radio-gap, $size);
-    $label-font-size: map.get(variables.$radio-label-font-sizes, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
 
     .radio-#{$size} {
       gap: $gap;
-    }
-
-    .radio-#{$size} label {
-      font-size: $label-font-size;
     }
 
     .radio-#{$size} input {
