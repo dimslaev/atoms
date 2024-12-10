@@ -19,12 +19,6 @@ export const Layout = ({ stories }: { stories: Story[] }) => {
   useEffect(() => {
     if (pathname === "/") {
       navigate("/examples/profilesettings");
-      // const firstStory = stories[0];
-      // if (firstStory) {
-      //   navigate(
-      //     `/${firstStory.title.toLocaleLowerCase()}/${firstStory.storyList[0].toLocaleLowerCase()}`
-      //   );
-      // }
     }
   }, [pathname, navigate, stories]);
 
