@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from "react";
 import { Icon } from "./icon";
-import { mdiCheck } from "@mdi/js";
+import { mdiCheckBold } from "@mdi/js";
 import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 import { Label } from "./label";
@@ -37,7 +37,7 @@ export const Checkbox = ({
   return (
     <CheckboxBase className={classes}>
       <input id={id} type="checkbox" disabled={disabled} {...props} />
-      <Icon path={mdiCheck} size={size} />
+      <Icon path={mdiCheckBold} size={size} />
       {label && (
         <Label htmlFor={id} size={size} error={error} success={success} disabled={disabled}>
           {label}
