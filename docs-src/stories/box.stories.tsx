@@ -5,31 +5,27 @@ const marginRows: BoxProps[][] = [
   [
     {
       children: "mt-4",
-      mt: "4",
+      className: "mt-4",
     },
     {
       children: "mb-4",
-      mb: "4",
+      className: "mb-4",
     },
     {
-      display: "block",
       children: "ml-4",
-      ml: "4",
+      className: "ml-4",
     },
     {
-      display: "block",
       children: "mr-4",
-      mr: "4",
+      className: "mr-4",
     },
     {
-      display: "block",
       children: "my-4",
-      my: "4",
+      className: "my-4",
     },
     {
-      display: "block",
       children: "mx-4",
-      mx: "4",
+      className: "mx-4",
     },
   ],
 ];
@@ -38,27 +34,27 @@ const paddingRows: BoxProps[][] = [
   [
     {
       children: "pt-4",
-      pt: "4",
+      className: "pt-4",
     },
     {
       children: "pb-4",
-      pb: "4",
+      className: "pb-4",
     },
     {
       children: "pl-4",
-      pl: "4",
+      className: "pl-4",
     },
     {
       children: "pr-4",
-      pr: "4",
+      className: "pr-4",
     },
     {
       children: "py-4",
-      py: "4",
+      className: "py-4",
     },
     {
       children: "px-4",
-      px: "4",
+      className: "px-4",
     },
   ],
 ];
@@ -66,19 +62,16 @@ const paddingRows: BoxProps[][] = [
 const horizontalMarginAutoRows: BoxProps[][] = [
   [
     {
-      display: "block",
       children: "ml-auto",
-      ml: "auto",
+      className: "ml-auto",
     },
     {
-      display: "block",
       children: "mr-auto",
-      mr: "auto",
+      className: "mr-auto",
     },
     {
-      display: "block",
       children: "mx-auto",
-      mx: "auto",
+      className: "mx-auto",
     },
   ],
 ];
@@ -87,15 +80,15 @@ const verticalMarginAutoRows: BoxProps[][] = [
   [
     {
       children: "mt-auto",
-      mt: "auto",
+      className: "mt-auto",
     },
     {
       children: "mb-auto",
-      mb: "auto",
+      className: "mb-auto",
     },
     {
       children: "my-auto",
-      my: "auto",
+      className: "my-auto",
     },
   ],
 ];
@@ -232,8 +225,7 @@ export function Default() {
       rowStyle={{ background: "var(--primary-subdued)", padding: "1rem 2rem" }}
     >
       <Box
-        display="flex"
-        gap="4"
+        className="flex gap-4"
         style={{
           background:
             "repeating-linear-gradient(45deg, transparent,var(--on-primary) 4px,var(--blue-800) 4px,var(--blue-800) 8px)",
@@ -260,9 +252,7 @@ export function Default() {
       rowStyle={{ background: "var(--primary-subdued)", padding: "1rem 2rem" }}
     >
       <Box
-        display="flex"
-        flex="col"
-        gap="4"
+        className="flex flex-col gap-4"
         style={{
           background:
             "repeating-linear-gradient(45deg, transparent,var(--on-primary) 4px,var(--blue-800) 4px,var(--blue-800) 8px)",
@@ -292,7 +282,7 @@ export function Default() {
         display: "block",
       }}
     >
-      <Box display="flex" items="center" gap="4">
+      <Box className="flex items-center gap-4">
         <Box
           style={{
             background: "var(--primary)",
@@ -323,7 +313,7 @@ export function Default() {
         display: "block",
       }}
     >
-      <Box display="flex" justify="center" gap="4">
+      <Box className="flex justify-center gap-4">
         <Box
           style={{
             background: "var(--primary)",
@@ -354,7 +344,7 @@ export function Default() {
         display: "block",
       }}
     >
-      <Box display="flex" flex="col" items="center" gap="4">
+      <Box className="flex flex-col items-center gap-4">
         <Box
           style={{
             background: "var(--primary)",
@@ -386,7 +376,7 @@ export function Default() {
         display: "block",
       }}
     >
-      <Box display="flex" flex="col" justify="center" gap="4" style={{ height: "100%" }}>
+      <Box className="flex flex-col justify-center gap-4 h-full">
         <Box
           style={{
             background: "var(--primary)",

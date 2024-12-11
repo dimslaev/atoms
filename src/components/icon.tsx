@@ -1,12 +1,9 @@
 import { ComponentProps } from "react";
 import { Icon as MdiIcon } from "@mdi/react";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
-import cn from "classnames";
 
 type Size = "sm" | "md" | "lg";
 
-export interface IconProps extends Omit<ComponentProps<typeof MdiIcon>, "size">, HelperProps {
+export interface IconProps extends Omit<ComponentProps<typeof MdiIcon>, "size"> {
   size?: Size;
 }
 
@@ -17,12 +14,6 @@ const sizeMap: { [key in Size]: string } = {
 };
 
 export const Icon = (props: IconProps) => {
-  const { helperClasses, restProps } = useHelperClasses(props);
-  const { size = "md", className, ...rest } = restProps as Omit<IconProps, keyof HelperProps>;
-  const classes = cn({
-    [helperClasses]: !!helperClasses,
-    [className as string]: !!className,
-  });
-
-  return <MdiIcon size={sizeMap[size]} className={classes} {...rest} />;
+  const { size = "md", ...rest } = props;
+  return <MdiIcon size={sizeMap[size]} {...rest} />;
 };

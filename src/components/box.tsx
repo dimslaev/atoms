@@ -1,29 +1,12 @@
 import React, { forwardRef } from "react";
-import { type HelperProps } from "../lib/types";
-import { useHelperClasses } from "../lib/hooks";
-import cn from "classnames";
 
-export interface BoxProps extends HelperProps {
+export interface BoxProps extends React.HTMLAttributes<HTMLElement> {
   as?: React.ElementType;
-  className?: string;
-  children?: React.ReactNode;
 }
-
 export type CombineBoxProps<T> = T & BoxProps;
-
-export const Box = forwardRef<HTMLElement, CombineBoxProps<React.HTMLAttributes<HTMLElement>>>(
-  ({ as: Component = "div", className, children, ...props }, ref) => {
-    const { helperClasses, restProps } = useHelperClasses(props);
-
-    const classes = cn(helperClasses, className);
-
-    return (
-      <Component ref={ref} className={classes} {...restProps}>
-        {children}
-      </Component>
-    );
-  }
-);
+export const Box = forwardRef<HTMLElement, BoxProps>(({ as: Component = "div", ...props }, ref) => {
+  return <Component ref={ref} {...props} />;
+});
 
 Box.displayName = "Box";
 
