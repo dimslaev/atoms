@@ -2,13 +2,12 @@ import { HTMLAttributes, ReactNode } from "react";
 import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
-export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
+export interface IntrinsicTabsProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
-
-const TabsBase = createBox<TabsProps>();
-
-export const Tabs = ({ className, ...props }: CombineBoxProps<TabsProps>) => {
+export type TabsProps = CombineBoxProps<IntrinsicTabsProps>;
+export const TabsBase = createBox<IntrinsicTabsProps>({}, "div");
+export const Tabs = ({ className, ...props }: TabsProps) => {
   return (
     <TabsBase
       className={cn({
@@ -20,7 +19,7 @@ export const Tabs = ({ className, ...props }: CombineBoxProps<TabsProps>) => {
   );
 };
 
-interface TabProps extends HTMLAttributes<HTMLButtonElement> {
+export interface IntrinsicTabProps extends HTMLAttributes<HTMLButtonElement> {
   size?: "md" | "lg" | "sm";
   active?: boolean;
   disabled?: boolean;
@@ -28,9 +27,8 @@ interface TabProps extends HTMLAttributes<HTMLButtonElement> {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
 }
-
-const TabBase = createBox<TabProps>({}, "button");
-
+export type TabProps = CombineBoxProps<IntrinsicTabProps>;
+export const TabBase = createBox<IntrinsicTabProps>({}, "button");
 export const Tab = ({
   size = "md",
   active = false,

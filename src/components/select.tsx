@@ -8,8 +8,7 @@ export interface SelectOption {
   value: string;
   label: string;
 }
-
-export interface SelectProps
+export interface IntrinsicSelectProps
   extends Omit<SelectHTMLAttributes<HTMLSelectElement>, "size" | "multiple"> {
   size?: "md" | "lg" | "sm";
   error?: boolean;
@@ -18,10 +17,9 @@ export interface SelectProps
   options: SelectOption[];
   startIcon?: ReactNode;
 }
-
-const SelectBase = createBox<Omit<SelectProps, "options">>({}, "div");
-
-export const Select = forwardRef<HTMLSelectElement, CombineBoxProps<SelectProps>>(
+export type SelectProps = CombineBoxProps<IntrinsicSelectProps>;
+export const SelectBase = createBox<Omit<IntrinsicSelectProps, "options">>({}, "div");
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
       size = "md",

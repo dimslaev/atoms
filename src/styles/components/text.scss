@@ -1,0 +1,5 @@
+@use "../mixins/text" as *;
+
+.text {
+  @include text();
+}

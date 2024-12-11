@@ -2,20 +2,13 @@ import { useRef, HTMLAttributes } from "react";
 import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
-export interface DialogProps extends HTMLAttributes<HTMLDivElement> {
+export interface IntrinsicDialogProps extends HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
   innerClassName?: string;
 }
-
-const DialogBase = createBox<DialogProps>();
-
-export const Dialog = ({
-  className,
-  innerClassName,
-  onClose,
-  children,
-  ...props
-}: CombineBoxProps<DialogProps>) => {
+export type DialogProps = CombineBoxProps<IntrinsicDialogProps>;
+export const DialogBase = createBox<IntrinsicDialogProps>();
+export const Dialog = ({ className, innerClassName, onClose, children, ...props }: DialogProps) => {
   const ref = useRef(null);
   const onClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (e.target === ref.current && onClose) {
@@ -45,11 +38,10 @@ export const Dialog = ({
   );
 };
 
-type DialogContentProps = HTMLAttributes<HTMLDivElement>;
-
-const DialogContentBase = createBox<DialogContentProps>();
-
-export const DialogContent = ({ className, ...props }: CombineBoxProps<DialogContentProps>) => {
+export type IntrinsicDialogContentProps = HTMLAttributes<HTMLDivElement>;
+export type DialogContentProps = CombineBoxProps<IntrinsicDialogContentProps>;
+export const DialogContentBase = createBox<IntrinsicDialogContentProps>();
+export const DialogContent = ({ className, ...props }: DialogContentProps) => {
   return (
     <DialogContentBase
       className={cn({
@@ -61,11 +53,10 @@ export const DialogContent = ({ className, ...props }: CombineBoxProps<DialogCon
   );
 };
 
-type DialogTitleProps = HTMLAttributes<HTMLDivElement>;
-
-const DialogTitleBase = createBox<DialogTitleProps>();
-
-export const DialogTitle = ({ className, ...props }: CombineBoxProps<DialogTitleProps>) => {
+export type IntrinsicDialogTitleProps = HTMLAttributes<HTMLDivElement>;
+export type DialogTitleProps = CombineBoxProps<IntrinsicDialogTitleProps>;
+export const DialogTitleBase = createBox<IntrinsicDialogTitleProps>();
+export const DialogTitle = ({ className, ...props }: DialogTitleProps) => {
   return (
     <DialogTitleBase
       className={cn({
@@ -77,11 +68,10 @@ export const DialogTitle = ({ className, ...props }: CombineBoxProps<DialogTitle
   );
 };
 
-type DialogActionsProps = HTMLAttributes<HTMLDivElement>;
-
-const DialogActionsBase = createBox<DialogActionsProps>();
-
-export const DialogActions = ({ className, ...props }: CombineBoxProps<DialogActionsProps>) => {
+export type IntrinsicDialogActionsProps = HTMLAttributes<HTMLDivElement>;
+export type DialogActionsProps = CombineBoxProps<IntrinsicDialogActionsProps>;
+export const DialogActionsBase = createBox<IntrinsicDialogActionsProps>();
+export const DialogActions = ({ className, ...props }: DialogActionsProps) => {
   return (
     <DialogActionsBase
       className={cn({

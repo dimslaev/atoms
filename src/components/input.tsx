@@ -2,7 +2,7 @@ import { InputHTMLAttributes, ReactNode, forwardRef } from "react";
 import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
+export interface IntrinsicInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   size?: "md" | "lg" | "sm";
   error?: boolean;
   success?: boolean;
@@ -11,10 +11,9 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   startIcon?: ReactNode;
   endIcon?: ReactNode;
 }
-
-const InputBase = createBox<InputProps>({}, "div");
-
-export const Input = forwardRef<HTMLInputElement, CombineBoxProps<InputProps>>(
+export type InputProps = CombineBoxProps<IntrinsicInputProps>;
+export const InputBase = createBox<IntrinsicInputProps>({}, "div");
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       size = "md",

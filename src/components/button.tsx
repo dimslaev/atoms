@@ -2,7 +2,8 @@ import { HTMLAttributes, ReactNode, forwardRef } from "react";
 import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
+export interface IntrinsicButtonProps
+  extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   size?: "md" | "lg" | "sm";
   color?: "primary" | "success" | "error";
   variant?: "solid" | "outline" | "text";
@@ -15,12 +16,9 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement | HTMLAnch
   startIcon?: ReactNode;
   endIcon?: ReactNode;
 }
-
-export type CombinedButtonProps = CombineBoxProps<ButtonProps>;
-
-const ButtonBase = createBox<ButtonProps>({}, "button");
-
-export const Button = forwardRef<HTMLElement, CombinedButtonProps>((props, ref) => {
+export type ButtonProps = CombineBoxProps<IntrinsicButtonProps>;
+export const ButtonBase = createBox<IntrinsicButtonProps>({}, "button");
+export const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const {
     size = "md",
     color = "primary",

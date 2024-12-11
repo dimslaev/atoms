@@ -3,17 +3,17 @@ import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 import { Label } from "./label";
 
-export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
+export interface IntrinsicRadioProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
   label?: string;
   size?: "md" | "lg" | "sm";
   error?: boolean;
   success?: boolean;
   disabled?: boolean;
 }
-
-const RadioBase = createBox<RadioProps>({}, "div");
-
-export const Radio = forwardRef<HTMLInputElement, CombineBoxProps<RadioProps>>(
+export type RadioProps = CombineBoxProps<IntrinsicRadioProps>;
+export const RadioBase = createBox<IntrinsicRadioProps>({}, "div");
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
       size = "md",

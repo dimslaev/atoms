@@ -33,7 +33,7 @@
   },
   "scripts": {
     "dev": "yarn watch:css & vite",
-    "build": "yarn clean && yarn build:css && yarn build:js",
+    "build": "yarn clean && yarn build:css && yarn build:js && yarn build:docs",
     "build:docs": "node -e \"fs.rmSync('docs', { recursive: true, force: true })\" && vite build -c vite.config.docs.ts && yarn cp:redirects",
     "build:js": "tsc --p ./tsconfig.build.json && vite build",
     "build:css": "sass src/styles/main.scss public/styles.css --no-source-map --style compressed",

@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactNode, forwardRef } from "react";
 import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
-export interface ChipProps extends HTMLAttributes<HTMLDivElement> {
+export interface IntrinsicChipProps extends HTMLAttributes<HTMLDivElement> {
   size?: "sm" | "md" | "lg";
   color?: "primary" | "success" | "error";
   variant?: "solid" | "outline";
@@ -12,10 +12,9 @@ export interface ChipProps extends HTMLAttributes<HTMLDivElement> {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
 }
-
-const ChipBase = createBox<Omit<ChipProps, "label">>({}, "div");
-
-export const Chip = forwardRef<HTMLDivElement, CombineBoxProps<ChipProps>>(
+export type ChipProps = CombineBoxProps<IntrinsicChipProps>;
+export const ChipBase = createBox<Omit<IntrinsicChipProps, "label">>({}, "div");
+export const Chip = forwardRef<HTMLDivElement, ChipProps>(
   (
     {
       size = "md",
@@ -44,7 +43,13 @@ export const Chip = forwardRef<HTMLDivElement, CombineBoxProps<ChipProps>>(
     });
 
     return (
-      <ChipBase ref={ref} className={classes} onClick={onClick} {...props}>
+      <ChipBase
+        ref={ref}
+        as={onClick ? "button" : "div"}
+        className={classes}
+        onClick={onClick}
+        {...props}
+      >
         {startIcon}
         <div className="chip-label">{label}</div>
         {endIcon}

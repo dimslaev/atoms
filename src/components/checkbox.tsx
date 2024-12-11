@@ -5,7 +5,7 @@ import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 import { Label } from "./label";
 
-export interface CheckboxProps
+export interface IntrinsicCheckboxProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
   label?: string;
   size?: "md" | "lg" | "sm";
@@ -13,9 +13,8 @@ export interface CheckboxProps
   success?: boolean;
   disabled?: boolean;
 }
-
-const CheckboxBase = createBox<CheckboxProps>({}, "div");
-
+export type CheckboxProps = CombineBoxProps<IntrinsicCheckboxProps>;
+export const CheckboxBase = createBox<IntrinsicCheckboxProps>({}, "div");
 export const Checkbox = ({
   size = "md",
   error = false,
@@ -25,7 +24,7 @@ export const Checkbox = ({
   label = "",
   className,
   ...props
-}: CombineBoxProps<CheckboxProps>) => {
+}: CheckboxProps) => {
   const classes = cn({
     checkbox: true,
     [`checkbox-${size}`]: true,

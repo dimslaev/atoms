@@ -2,16 +2,15 @@ import { LabelHTMLAttributes } from "react";
 import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+export interface IntrinsicLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   size?: "md" | "lg" | "sm";
   required?: boolean;
   error?: boolean;
   success?: boolean;
   disabled?: boolean;
 }
-
-const LabelBase = createBox<LabelProps>({}, "label");
-
+export type LabelProps = CombineBoxProps<IntrinsicLabelProps>;
+export const LabelBase = createBox<IntrinsicLabelProps>({}, "label");
 export const Label = ({
   size = "md",
   required = false,
@@ -20,7 +19,7 @@ export const Label = ({
   disabled = false,
   className,
   ...props
-}: CombineBoxProps<LabelProps>) => {
+}: LabelProps) => {
   const classes = cn({
     label: true,
     [`label-${size}`]: true,

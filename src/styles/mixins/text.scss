@@ -1,6 +1,8 @@
-@mixin fonts() {
+@use "../variables";
+
+@mixin text() {
   @each $key in h1, h2, h3, h4, h5, h6, p, small {
-    .#{$key} {
+    &-#{$key} {
       font-family: var(--#{$key}-family);
       font-size: var(--#{$key});
       font-weight: var(--#{$key}-weight);
@@ -10,5 +12,3 @@
     }
   }
 }
-
-@include fonts();

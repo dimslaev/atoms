@@ -15,10 +15,10 @@
 @use "components/radio.scss";
 @use "components/select.scss";
 @use "components/tabs.scss";
+@use "components/text" as text-component;
 @use "components/textarea.scss";
 @use "components/dialog.scss";
 @use "components/card.scss";
 @use "helpers/display";
 @use "helpers/flex";
 @use "helpers/space";
-@use "helpers/text" as text-helpers;
