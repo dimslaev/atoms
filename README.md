@@ -24,6 +24,7 @@ Responsive suffix example: `sm:my-4`, `lg:hidden`
 
 ## Breakpoints
 
+- **initial**: `0px`
 - **xs**: `540px`
 - **sm**: `768px`
 - **md**: `1025px`
