@@ -1,0 +1,33 @@
+@use "sass:map";
+@use "../variables";
+@use "../mixins/shared";
+@use "../mixins/avatar.scss";
+
+.avatar {
+  @extend %flex-center;
+  position: relative;
+  overflow: hidden;
+  border: var(--border-width) solid var(--outline);
+  border-radius: 50%;
+
+  &-square {
+    border-radius: var(--border-radius);
+  }
+
+  &-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-icon {
+    @extend %flex-center;
+  }
+
+  &-initials {
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+  }
+
+  @include avatar.avatar-size();
+}

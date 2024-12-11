@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../variables";
+
+@mixin avatar-size() {
+  @each $size in sm, md, lg {
+    $avatar-size: map.get(variables.$avatar-sizes, $size);
+    $avatar-font-size: map.get(variables.$avatar-font-sizes, $size);
+    $avatar-icon-size: map.get(variables.$avatar-icon-sizes, $size);
+
+    &-#{$size} {
+      width: $avatar-size;
+      height: $avatar-size;
+      font-size: $avatar-font-size;
+
+      .avatar-icon {
+        svg {
+          width: $avatar-icon-size;
+          height: $avatar-icon-size;
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,9 @@
 @use "tokens/text";
 @use "_reset";
 @use "_base";
+
+@use "components/alert.scss";
+@use "components/avatar.scss";
 @use "components/button.scss";
 @use "components/checkbox.scss";
 @use "components/chip.scss";
