@@ -1,3 +1,5 @@
+export * as alert from "./alert.stories";
+export * as avatar from "./avatar.stories";
 export * as box from "./box.stories";
 export * as button from "./button.stories";
 export * as card from "./card.stories";
