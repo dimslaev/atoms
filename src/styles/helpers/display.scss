@@ -1,9 +1,0 @@
-@use "_responsive.scss";
-
-$displays: (
-  "flex": flex,
-  "block": block,
-  "hidden": none,
-);
-
-@include responsive.responsive-helper("", "display", $displays, false);

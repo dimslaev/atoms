@@ -5,7 +5,6 @@
 @use "tokens/text";
 @use "_reset";
 @use "_base";
-
 @use "components/button.scss";
 @use "components/checkbox.scss";
 @use "components/chip.scss";
@@ -19,6 +18,4 @@
 @use "components/textarea.scss";
 @use "components/dialog.scss";
 @use "components/card.scss";
-@use "helpers/display";
-@use "helpers/flex";
-@use "helpers/space";
+@use "_helpers.scss";

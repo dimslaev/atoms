@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Box } from "../../src/components/box";
 import { Card, CardTitle, CardContent, CardActions } from "../../src/components/card";
 import { Text } from "../../src/components/text";
 import { Input } from "../../src/components/input";
@@ -12,7 +13,6 @@ import { Tabs, Tab } from "../../src/components/tabs";
 import { Chip } from "../../src/components/chip";
 import { Icon } from "../../src/components/icon";
 import { mdiAccount, mdiBell, mdiEmail, mdiLock, mdiClose } from "@mdi/js";
-import { Box } from "../../src/components/box";
 
 export const ProfileSettings = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -56,27 +56,29 @@ export const ProfileSettings = () => {
         <CardContent>
           {activeTab === "profile" && (
             <Box className="flex flex-col gap-4">
-              <Box className="flex flex-col gap-1">
-                <Label required>Display Name</Label>
-                <Input
-                  placeholder="Enter your display name"
-                  defaultValue="John Doe"
-                  startIcon={<Icon path={mdiAccount} />}
-                />
-              </Box>
+              <Box className="flex flex-col md:flex-row gap-4">
+                <Box className="flex flex-col gap-1">
+                  <Label required>Display Name</Label>
+                  <Input
+                    placeholder="Enter your display name"
+                    defaultValue="John Doe"
+                    startIcon={<Icon path={mdiAccount} />}
+                  />
+                </Box>
 
-              <Box className="flex flex-col gap-1">
-                <Label required>Email Address</Label>
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  defaultValue="john.doe@example.com"
-                  startIcon={<Icon path={mdiEmail} />}
-                />
+                <Box className="flex flex-col gap-1">
+                  <Label required>Email Address</Label>
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    defaultValue="john.doe@example.com"
+                    startIcon={<Icon path={mdiEmail} />}
+                  />
+                </Box>
               </Box>
 
               <Box className="flex flex-col gap-2">
-                <Label>Theme Preference</Label>
+                <Text>Theme Preference</Text>
                 <Box className="flex flex-col gap-2">
                   <Radio
                     name="theme"
@@ -105,7 +107,7 @@ export const ProfileSettings = () => {
               <Divider />
 
               <Box className="flex flex-col gap-2">
-                <Label>Privacy Settings</Label>
+                <Text>Privacy Settings</Text>
                 <Box className="flex flex-col gap-2">
                   <Checkbox id="public-profile" label="Make my profile public" defaultChecked />
                   <Checkbox id="show-email" label="Show my email to other users" />
@@ -115,7 +117,7 @@ export const ProfileSettings = () => {
               <Divider />
 
               <Box className="flex flex-col gap-2">
-                <Label>Delete Account</Label>
+                <Text>Danger Zone</Text>
                 <Button
                   color="error"
                   variant="outline"

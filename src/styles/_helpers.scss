@@ -1,0 +1,119 @@
+@use "sass:map";
+@use "variables";
+
+$display-helpers: (
+  prefix: "",
+  rule: "display",
+  values: variables.$display,
+  use_prefix: false,
+);
+
+$flex-helpers: (
+    prefix: "flex",
+    rule: "flex-direction",
+    values: variables.$flex,
+    use_prefix: true,
+  ),
+  (
+    prefix: "items",
+    rule: "align-items",
+    values: variables.$flex-items,
+    use_prefix: true,
+  ),
+  (
+    prefix: "justify",
+    rule: "justify-content",
+    values: variables.$flex-justify,
+    use_prefix: true,
+  ),
+  (
+    prefix: "gap",
+    rule: "gap",
+    values: variables.$spaces,
+    use_prefix: true,
+  );
+
+@function get-class-name($bp-key, $prefix, $key, $use_prefix) {
+  @if $bp-key == initial {
+    @return if($use_prefix, "#{$prefix}-#{$key}", "#{$key}");
+  } @else {
+    @return if($use_prefix, "#{$bp-key}\\:#{$prefix}-#{$key}", "#{$bp-key}\\:#{$key}");
+  }
+}
+
+@mixin generate-classes($bp-key, $helpers...) {
+  @each $helper in $helpers {
+    $prefix: map.get($helper, "prefix");
+    $rule: map.get($helper, "rule");
+    $values: map.get($helper, "values");
+    $use_prefix: map.get($helper, "use_prefix");
+
+    @each $key, $value in $values {
+      $class_name: get-class-name($bp-key, $prefix, $key, $use_prefix);
+      .#{$class_name} {
+        #{$rule}: $value;
+      }
+    }
+  }
+}
+
+@mixin generate-space-classes($bp-key) {
+  @each $dir-key, $dir-value in variables.$space-dirs {
+    $class-prefix: if($bp-key == "initial", "", "#{$bp-key}\\:");
+    .#{$class-prefix}m#{$dir-key}-auto {
+      margin-#{$dir-value}: auto;
+    }
+  }
+  .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}my-auto {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  @each $size-key, $size-value in variables.$spaces {
+    @each $dir-key, $dir-value in variables.$space-dirs {
+      $class-prefix: if($bp-key == "initial", "", "#{$bp-key}\\:");
+
+      .#{$class-prefix}m#{$dir-key}-#{$size-key} {
+        margin-#{$dir-value}: $size-value;
+      }
+      .#{$class-prefix}p#{$dir-key}-#{$size-key} {
+        padding-#{$dir-value}: $size-value;
+      }
+    }
+
+    .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}mx-#{$size-key} {
+      margin-left: $size-value;
+      margin-right: $size-value;
+    }
+    .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}my-#{$size-key} {
+      margin-top: $size-value;
+      margin-bottom: $size-value;
+    }
+    .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}px-#{$size-key} {
+      padding-left: $size-value;
+      padding-right: $size-value;
+    }
+    .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}py-#{$size-key} {
+      padding-top: $size-value;
+      padding-bottom: $size-value;
+    }
+  }
+}
+
+@each $bp-key, $bp-value in variables.$breakpoints {
+  @if ($bp-key == initial) {
+    @include generate-classes("initial", $display-helpers);
+    @include generate-classes("initial", $flex-helpers...);
+    @include generate-space-classes("initial");
+  } @else {
+    @media screen and (min-width: $bp-value) {
+      @include generate-classes($bp-key, $display-helpers);
+      @include generate-classes($bp-key, $flex-helpers...);
+      @include generate-space-classes($bp-key);
+    }
+  }
+}

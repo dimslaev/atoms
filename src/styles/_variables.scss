@@ -43,6 +43,37 @@ $spaces: (
   "8": 3.2rem,
 );
 
+$space-dirs: (
+  "t": "top",
+  "l": "left",
+  "b": "bottom",
+  "r": "right",
+);
+
+$display: (
+  "flex": flex,
+  "block": block,
+  "hidden": none,
+);
+
+$flex: (
+  "row": row,
+  "col": column,
+);
+
+$flex-items: (
+  "start": flex-start,
+  "center": center,
+  "end": flex-end,
+);
+
+$flex-justify: (
+  "start": flex-start,
+  "center": center,
+  "end": flex-end,
+  "between": space-between,
+);
+
 // Input
 
 $input-sizes: $button-sizes;
