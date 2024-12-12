@@ -1,5 +1,7 @@
+@use "../variables";
+
 .divider {
   border: 0;
-  border-top: var(--border-width) solid var(--outline);
+  border-top: variables.$border-width solid var(--outline);
   margin: 0;
 }

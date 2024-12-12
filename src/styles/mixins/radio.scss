@@ -44,7 +44,7 @@
 @mixin radio-sizes() {
   @each $size in sm, md, lg {
     $radio-size: map.get(variables.$radio-sizes, $size);
-    $before-size: $radio-size - 0.583 * $radio-size;
+    $before-size: map.get(variables.$radio-dot-sizes, $size);
     $gap: map.get(variables.$radio-gap, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
 

@@ -15,3 +15,11 @@
   align-items: center;
   justify-content: center;
 }
+
+@mixin size-border-radius {
+  @each $size in sm, md, lg {
+    &-#{Ssize} {
+      border-radius: var(--border-radius-#{$size});
+    }
+  }
+}

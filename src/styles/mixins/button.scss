@@ -8,7 +8,7 @@
   white-space: nowrap;
   user-select: none;
 
-  border-width: var(--border-width);
+  border-width: variables.$border-width;
   border-style: solid;
 
   font-family: var(--font-family-1);
@@ -133,10 +133,13 @@
     $gap: $py * 0.5;
     $font-size: map.get(variables.$btn-font-sizes, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
+    $radius: map.get(variables.$border-radius, $size);
 
     &-#{$size} {
+      border-radius: $radius;
+
       &:not(.btn-icon) {
-        padding: calc($py - var(--border-width)) $px;
+        padding: calc($py - variables.$border-width) $px;
         font-size: $font-size;
 
         &.btn-w-start {
@@ -151,7 +154,7 @@
       }
 
       &.btn-icon {
-        padding: calc($py - var(--border-width) + (2.4rem - $icon-size) / 2);
+        padding: calc($py - variables.$border-width + (2.4rem - $icon-size) / 2);
       }
     }
   }

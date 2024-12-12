@@ -12,8 +12,7 @@
 %input-input {
   display: block;
   line-height: 2.4rem;
-  border-radius: var(--border-radius);
-  border: var(--border-width) solid var(--outline);
+  border: variables.$border-width solid var(--outline);
   color: inherit;
   transition: all var(--motion-time-sm) ease-in-out;
 }
@@ -79,32 +78,34 @@
     $font-size: map.get(variables.$input-font-sizes, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
     $height: $py * 2 + 2.4rem;
+    $radius: map.get(variables.$border-radius, $size);
 
     &-#{$size} {
       #{$selector} {
-        padding: calc($py - var(--border-width)) $px;
+        border-radius: $radius;
+        padding: calc($py - variables.$border-width) $px;
         font-size: $font-size;
       }
 
       &.#{$selector}-w-start {
         #{$selector} {
-          padding-left: calc($icon-size + $px + var(--border-width));
+          padding-left: calc($icon-size + $px + variables.$border-width);
         }
 
         svg:first-child {
           top: calc(($height - $icon-size) / 2);
-          left: calc($px * 0.5 + var(--border-width));
+          left: calc($px * 0.5 + variables.$border-width);
         }
       }
 
       &.#{$selector}-w-end {
         #{$selector} {
-          padding-right: calc($icon-size + $px + var(--border-width));
+          padding-right: calc($icon-size + $px + variables.$border-width);
         }
 
         svg:last-child {
           top: calc(($height - $icon-size) / 2);
-          right: calc($px * 0.5 + var(--border-width));
+          right: calc($px * 0.5 + variables.$border-width);
         }
       }
     }

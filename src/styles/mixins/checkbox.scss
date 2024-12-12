@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: var(--border-width) solid;
+  border: variables.$border-width solid;
 }
 
 @mixin checkbox-colors() {
@@ -65,7 +65,8 @@
     $height: map.get(variables.$checbox-sizes, $size);
     $gap: map.get(variables.$checbox-gap, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
-    $mask-padding: 0.3rem;
+    $radius: map.get(variables.$border-radius, $size) * 0.5;
+    $mask-padding: 0.4rem;
 
     &-#{$size} {
       gap: $gap;
@@ -73,6 +74,7 @@
       input {
         width: $width;
         height: $height;
+        border-radius: $radius;
 
         & + svg {
           left: calc(($width - $icon-size) / 2);

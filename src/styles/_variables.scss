@@ -1,28 +1,4 @@
-// Button
-
-$button-sizes: (
-  "sm": 0.4rem,
-  "md": 0.8rem,
-  "lg": 1.2rem,
-);
-
-$btn-font-sizes: (
-  "sm": 1.4rem,
-  "md": 1.6rem,
-  "lg": 1.8rem,
-);
-
-$btn-gap: (
-  "sm": 0.4rem,
-  "md": 0.6rem,
-  "lg": 0.8rem,
-);
-
-$icon-sizes: (
-  "sm": 1.8rem,
-  "md": 2.2rem,
-  "lg": 2.4rem,
-);
+// Shared
 
 $breakpoints: (
   "initial": "0px",
@@ -74,6 +50,42 @@ $flex-justify: (
   "between": space-between,
 );
 
+$border-radius: (
+  "sm": 0.6rem,
+  "md": 0.8rem,
+  "lg": 1rem,
+);
+
+$border-width: 0.2rem;
+
+// Icon
+
+$icon-sizes: (
+  "sm": 1.8rem,
+  "md": 2.2rem,
+  "lg": 2.4rem,
+);
+
+// Button
+
+$button-sizes: (
+  "sm": 0.4rem,
+  "md": 0.8rem,
+  "lg": 1.2rem,
+);
+
+$btn-font-sizes: (
+  "sm": 1.4rem,
+  "md": 1.6rem,
+  "lg": 1.8rem,
+);
+
+$btn-gap: (
+  "sm": 0.4rem,
+  "md": 0.6rem,
+  "lg": 0.8rem,
+);
+
 // Input
 
 $input-sizes: $button-sizes;
@@ -93,6 +105,11 @@ $checbox-gap: $btn-gap;
 // Radio
 
 $radio-sizes: $checbox-sizes;
+$radio-dot-sizes: (
+  sm: 0.4rem,
+  md: 0.6rem,
+  lg: 0.8rem,
+);
 $radio-gap: $btn-gap;
 
 // Chip

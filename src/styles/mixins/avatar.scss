@@ -6,11 +6,16 @@
     $avatar-size: map.get(variables.$avatar-sizes, $size);
     $avatar-font-size: map.get(variables.$avatar-font-sizes, $size);
     $avatar-icon-size: map.get(variables.$avatar-icon-sizes, $size);
+    $radius: map.get(variables.$border-radius, $size);
 
     &-#{$size} {
       width: $avatar-size;
       height: $avatar-size;
       font-size: $avatar-font-size;
+
+      &.avatar-square {
+        border-radius: $radius;
+      }
 
       .avatar-icon {
         svg {

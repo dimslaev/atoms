@@ -7,8 +7,8 @@
   align-items: start;
   gap: map.get(variables.$spaces, "2");
   padding: map.get(variables.$spaces, "2");
-  border-radius: var(--border-radius);
-  border-width: var(--border-width);
+  border-radius: map.get(variables.$border-radius, "md");
+  border-width: variables.$border-width;
   border-style: solid;
 
   &-icon {

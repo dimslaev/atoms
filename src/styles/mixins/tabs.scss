@@ -11,16 +11,14 @@
     right: 0;
     bottom: 0;
     left: 0;
-    height: var(--border-width);
+    height: variables.$border-width;
     background-color: var(--primary);
   }
 }
 
 %tab {
   white-space: nowrap;
-  border: var(--border-width) solid transparent;
-  border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
+  border: variables.$border-width solid transparent;
   font-family: var(--font-family-1);
   font-weight: 500;
   line-height: 2.4rem;
@@ -56,10 +54,13 @@
     $gap: $py * 0.5;
     $font-size: map.get(variables.$btn-font-sizes, $size);
     $icon-size: map.get(variables.$icon-sizes, $size);
+    $radius: map.get(variables.$border-radius, $size);
 
     &-#{$size} {
+      border-top-left-radius: $radius;
+      border-top-right-radius: $radius;
       &:not(.tab-icon) {
-        padding: calc($py - var(--border-width)) $px;
+        padding: calc($py - variables.$border-width) $px;
         font-size: $font-size;
 
         &.tab-w-start {
@@ -74,7 +75,7 @@
       }
 
       &.tab-icon {
-        padding: calc($py - var(--border-width) + (2.4rem - $icon-size) / 2);
+        padding: calc($py - variables.$border-width + (2.4rem - $icon-size) / 2);
       }
     }
   }

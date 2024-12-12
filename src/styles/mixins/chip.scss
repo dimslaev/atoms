@@ -10,18 +10,18 @@
     $font-size: map.get(variables.$chip-font-sizes, $size);
 
     &-#{$size} {
-      padding: calc($py - var(--border-width)) $px;
+      padding: calc($py - variables.$border-width) $px;
       border-radius: $radius;
       font-size: $font-size;
 
       &.chip-w-start {
         gap: $gap;
-        padding-left: calc($gap + var(--border-width));
+        padding-left: calc($gap + variables.$border-width);
       }
 
       &.chip-w-end {
         gap: $gap;
-        padding-right: calc($gap + var(--border-width));
+        padding-right: calc($gap + variables.$border-width);
       }
     }
   }
