@@ -2,13 +2,12 @@
 @use "../variables";
 
 %tabs {
-  display: flex;
   position: relative;
 
   &::before {
     content: "";
     position: absolute;
-    right: 0;
+    width: 100%;
     bottom: 0;
     left: 0;
     height: variables.$border-width;

@@ -4,6 +4,11 @@
 
 .tabs {
   @extend %tabs;
+
+  &-inner {
+    display: flex;
+    overflow-x: auto;
+  }
 }
 
 .tab {

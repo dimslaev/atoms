@@ -20,7 +20,7 @@ export const ProfileSettings = () => {
   const [theme, setTheme] = useState("light");
 
   return (
-    <Box className="mx-auto p-4">
+    <Box className="md:mx-auto md:p-4">
       <Card>
         <CardTitle className="flex items-center justify-between">
           <Text variant="h3" as="div">

@@ -7,7 +7,7 @@ export interface IntrinsicTabsProps extends HTMLAttributes<HTMLDivElement> {
 }
 export type TabsProps = CombineBoxProps<IntrinsicTabsProps>;
 export const TabsBase = createBox<IntrinsicTabsProps>({}, "div");
-export const Tabs = ({ className, ...props }: TabsProps) => {
+export const Tabs = ({ className, children, ...props }: TabsProps) => {
   return (
     <TabsBase
       className={cn({
@@ -15,7 +15,9 @@ export const Tabs = ({ className, ...props }: TabsProps) => {
         [className!]: !!className,
       })}
       {...props}
-    />
+    >
+      <div className="tabs-inner">{children}</div>
+    </TabsBase>
   );
 };
 
