@@ -11,11 +11,7 @@ export const Container = ({
   style?: CSSProperties;
   rowStyle?: CSSProperties;
 }) => (
-  <div
-    style={{
-      padding: "2rem",
-    }}
-  >
+  <div style={style}>
     {title && (
       <h4
         style={{

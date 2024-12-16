@@ -21,7 +21,7 @@ export const ButtonBase = createBox<IntrinsicButtonProps>({}, "button");
 export const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const {
     size = "md",
-    color = "inherit",
+    color = "primary",
     variant = "solid",
     disabled = false,
     loading = false,

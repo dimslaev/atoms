@@ -74,9 +74,16 @@ $flex-helpers: (
   }
 
   @each $size-key, $size-value in variables.$spaces {
-    @each $dir-key, $dir-value in variables.$space-dirs {
-      $class-prefix: if($bp-key == "initial", "", "#{$bp-key}\\:");
+    $class-prefix: if($bp-key == "initial", "", "#{$bp-key}\\:");
 
+    .#{$class-prefix}m-#{$size-key} {
+      margin: $size-value;
+    }
+    .#{$class-prefix}p-#{$size-key} {
+      padding: $size-value;
+    }
+
+    @each $dir-key, $dir-value in variables.$space-dirs {
       .#{$class-prefix}m#{$dir-key}-#{$size-key} {
         margin-#{$dir-value}: $size-value;
       }

@@ -14,6 +14,7 @@ export const Layout = ({ stories }: { stories: Story[] }) => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const mainRef = useRef<HTMLDivElement>(null);
+  const asideRef = useRef<HTMLDivElement>(null);
   const [asideOpen, setAsideOpen] = useState(false);
 
   useEffect(() => {
@@ -27,6 +28,25 @@ export const Layout = ({ stories }: { stories: Story[] }) => {
       mainRef.current.scrollTop = 0;
     }
   }, [pathname]);
+
+  const onClickOutside = (e: Event) => {
+    if (!asideRef.current?.contains(e.target as Node)) {
+      setAsideOpen(false);
+    }
+  };
+
+  const toggleListener = (active: boolean) => {
+    setTimeout(() => {
+      document[active ? "addEventListener" : "removeEventListener"]("click", onClickOutside);
+    });
+  };
+
+  useEffect(() => {
+    toggleListener(asideOpen);
+    return () => {
+      toggleListener(false);
+    };
+  }, [asideOpen]);
 
   return (
     <div className="stories">
@@ -42,7 +62,7 @@ export const Layout = ({ stories }: { stories: Story[] }) => {
             .filter(Boolean)
             .join(" ")}
         >
-          <nav className="stories__nav">
+          <nav className="stories__nav" ref={asideRef}>
             <ul className="stories__nav-list">
               {stories.map((item) => (
                 <NavItem key={item.title} {...item} setAsideOpen={setAsideOpen} />
@@ -50,7 +70,12 @@ export const Layout = ({ stories }: { stories: Story[] }) => {
             </ul>
           </nav>
         </aside>
-        <section className="stories__main" ref={mainRef}>
+        <section
+          className={["stories__main", asideOpen && "stories__main--aside-open"]
+            .filter(Boolean)
+            .join(" ")}
+          ref={mainRef}
+        >
           <div className="stories__main-inner">
             <Outlet />
           </div>

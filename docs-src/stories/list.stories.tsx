@@ -10,7 +10,10 @@ const button = (
     size="sm"
     startIcon={<Icon path={mdiTrashCan} size="sm" />}
     iconOnly
-    onClick={(e) => e.preventDefault()}
+    onClick={(e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    }}
   />
 );
 
@@ -97,10 +100,15 @@ const groupListRows: ListItemProps[][] = [
 
 export function Default() {
   return defaultListRows.map((row, index) => (
-    <Container key={index} title={getRowTitle(row)}>
+    <Container
+      key={index}
+      title={getRowTitle(row)}
+      style={{ maxWidth: 400 }}
+      rowStyle={{ flexDirection: "column", alignItems: "initial" }}
+    >
       <List>
         {row.map((col, colIndex) => (
-          <ListItem key={colIndex} {...col} style={{ width: 300 }} />
+          <ListItem key={colIndex} {...col} />
         ))}
       </List>
     </Container>
@@ -109,10 +117,15 @@ export function Default() {
 
 export function Group() {
   return groupListRows.map((row, index) => (
-    <Container key={index} title={getRowTitle(row)}>
+    <Container
+      key={index}
+      title={getRowTitle(row)}
+      style={{ maxWidth: 400 }}
+      rowStyle={{ flexDirection: "column", alignItems: "initial" }}
+    >
       <List group>
         {row.map((col, colIndex) => (
-          <ListItem key={colIndex} {...col} style={{ width: 300 }} />
+          <ListItem key={colIndex} {...col} />
         ))}
       </List>
     </Container>

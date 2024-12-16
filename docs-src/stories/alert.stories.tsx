@@ -129,10 +129,11 @@ export function Solid() {
     <Container
       key={index}
       title={getRowTitle(row)}
-      rowStyle={{ flexDirection: "column", alignItems: "start" }}
+      style={{ maxWidth: 400 }}
+      rowStyle={{ flexDirection: "column", alignItems: "initial" }}
     >
       {row.map((col, colIndex) => (
-        <Alert key={colIndex} {...col} style={{ width: 300 }} />
+        <Alert key={colIndex} {...col} />
       ))}
     </Container>
   ));
@@ -143,10 +144,11 @@ export function Outline() {
     <Container
       key={index}
       title={getRowTitle(row)}
-      rowStyle={{ flexDirection: "column", alignItems: "start" }}
+      style={{ maxWidth: 400 }}
+      rowStyle={{ flexDirection: "column", alignItems: "initial" }}
     >
       {row.map((col, colIndex) => (
-        <Alert key={colIndex} {...col} style={{ width: 300 }} />
+        <Alert key={colIndex} {...col} />
       ))}
     </Container>
   ));

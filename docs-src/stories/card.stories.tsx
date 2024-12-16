@@ -5,7 +5,7 @@ import { Container } from "../components/story-container";
 
 export function Default() {
   return (
-    <div style={{ maxWidth: 450 }}>
+    <div className="flex flex-col gap-4" style={{ maxWidth: 450 }}>
       <Container title="All elements">
         <Card>
           <CardMedia>
