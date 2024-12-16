@@ -79,6 +79,9 @@
   --primary-pressed: var(--blue-500);
   --on-primary: var(--black);
   --primary-subdued: var(--blue-700);
+  --inherit: var(--gray-700);
+  --inherit-hover: var(--gray-800);
+  --inherit-pressed: var(--gray-900);
   --text-primary: var(--gray-50);
   --text-secondary: var(--gray-300);
   --background: var(--black);
@@ -108,6 +111,9 @@
   --primary-pressed: var(--blue-600);
   --on-primary: var(--white);
   --primary-subdued: var(--blue-100);
+  --inherit: var(--gray-200);
+  --inherit-hover: var(--gray-300);
+  --inherit-pressed: var(--gray-400);
   --text-primary: var(--black);
   --text-secondary: var(--gray-600);
   --background: var(--gray-100);

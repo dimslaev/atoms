@@ -5,7 +5,7 @@ import cn from "classnames";
 export interface IntrinsicButtonProps
   extends HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   size?: "md" | "lg" | "sm";
-  color?: "primary" | "success" | "error";
+  color?: "inherit" | "primary" | "success" | "error";
   variant?: "solid" | "outline" | "text";
   disabled?: boolean;
   loading?: boolean;
@@ -21,7 +21,7 @@ export const ButtonBase = createBox<IntrinsicButtonProps>({}, "button");
 export const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const {
     size = "md",
-    color = "primary",
+    color = "inherit",
     variant = "solid",
     disabled = false,
     loading = false,
