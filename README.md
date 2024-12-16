@@ -34,4 +34,4 @@ Responsive suffix example: `sm:my-4`, `lg:hidden`
 
 - Component documentation
 - Visual regression testing
-- Additional components (Alert, Avatar, Switch, Menu, Dropdown, File Upload, Table, Tooltip)
+- Additional components (Switch, Menu, Dropdown, File Upload, Table, Tooltip)

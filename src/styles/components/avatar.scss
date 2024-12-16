@@ -1,7 +1,6 @@
-@use "sass:map";
 @use "../variables";
 @use "../mixins/shared";
-@use "../mixins/avatar.scss";
+@use "../mixins/avatar";
 
 .avatar {
   @extend %flex-center;
@@ -25,5 +24,5 @@
     text-transform: uppercase;
   }
 
-  @include avatar.avatar-size();
+  @include avatar.avatar-sizes();
 }

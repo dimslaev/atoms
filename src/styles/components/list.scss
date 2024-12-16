@@ -1,0 +1,46 @@
+@use "sass:map";
+@use "../variables";
+@use "../mixins/shared";
+@use "../mixins/alert";
+
+.list {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  &-group {
+    border: variables.$border-width solid var(--outline);
+    border-radius: map.get(variables.$border-radius, "md");
+  }
+}
+
+.list-item {
+  &-group {
+    @extend %alert-container;
+    &:not(:last-child) {
+      border-bottom: variables.$border-width solid var(--outline);
+    }
+  }
+
+  &-action {
+    @extend %interactive-element;
+    color: var(--text-primary);
+    text-decoration: none;
+
+    &:hover:not(.list-item-selected) {
+      background-color: var(--inherit-hover);
+    }
+  }
+
+  &-selected {
+    background-color: var(--inherit);
+  }
+
+  &-icon {
+    @extend %alert-icon;
+  }
+
+  &-content {
+    @extend %alert-content;
+  }
+}

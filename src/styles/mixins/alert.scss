@@ -1,0 +1,65 @@
+@use "sass:map";
+@use "../variables";
+@use "../mixins/shared";
+
+%alert-container {
+  display: flex;
+  align-items: start;
+  gap: map.get(variables.$spaces, "2");
+  padding: map.get(variables.$spaces, "2");
+}
+
+%alert-icon {
+  @extend %flex-center;
+  flex-shrink: 0;
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+%alert-content {
+  flex-grow: 1;
+  line-height: 2.4rem;
+}
+
+%alert-title {
+  line-height: 2.4rem;
+  font-weight: var(--weight-bold);
+}
+
+%alert-close {
+  @extend %interactive-element;
+  @extend %flex-center;
+  flex-shrink: 0;
+  padding: 0;
+  height: 2.4rem;
+  width: 2.4rem;
+  color: inherit;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:active {
+    opacity: 0.9;
+  }
+}
+
+@mixin alert-colors() {
+  &-outline {
+    @each $color in primary, success, error {
+      &.alert-#{$color} {
+        border-color: var(--#{$color});
+        color: var(--#{$color});
+      }
+    }
+  }
+
+  &-solid {
+    @each $color in primary, success, error {
+      &.alert-#{$color} {
+        background-color: var(--#{$color});
+        color: var(--on-#{$color});
+      }
+    }
+  }
+}

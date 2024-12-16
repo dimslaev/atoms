@@ -1,66 +1,28 @@
 @use "sass:map";
 @use "../variables";
 @use "../mixins/shared";
+@use "../mixins/alert";
 
 .alert {
-  display: flex;
-  align-items: start;
-  gap: map.get(variables.$spaces, "2");
-  padding: map.get(variables.$spaces, "2");
+  @extend %alert-container;
+  border: variables.$border-width solid transparent;
   border-radius: map.get(variables.$border-radius, "md");
-  border-width: variables.$border-width;
-  border-style: solid;
 
   &-icon {
-    @extend %flex-center;
-    flex-shrink: 0;
-    height: 2.4rem;
-    width: 2.4rem;
+    @extend %alert-icon;
   }
 
   &-content {
-    flex-grow: 1;
-    line-height: 2.4rem;
+    @extend %alert-content;
   }
 
   &-title {
-    line-height: 2.4rem;
-    font-weight: var(--weight-bold);
+    @extend %alert-title;
   }
 
   &-close {
-    @extend %interactive-element;
-    @extend %flex-center;
-    flex-shrink: 0;
-    padding: 0;
-    height: 2.4rem;
-    width: 2.4rem;
-    color: inherit;
-
-    &:hover {
-      opacity: 0.75;
-    }
-
-    &:active {
-      opacity: 0.9;
-    }
+    @extend %alert-close;
   }
 
-  &-outline {
-    @each $color in primary, success, error {
-      &.alert-#{$color} {
-        border-color: var(--#{$color});
-        color: var(--#{$color});
-      }
-    }
-  }
-
-  &-solid {
-    @each $color in primary, success, error {
-      &.alert-#{$color} {
-        background-color: var(--#{$color});
-        color: var(--on-#{$color});
-      }
-    }
-  }
+  @include alert.alert-colors();
 }

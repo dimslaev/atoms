@@ -10,6 +10,7 @@ export * as divider from "./divider.stories";
 export * as icon from "./icon.stories";
 export * as input from "./input.stories";
 export * as label from "./label.stories";
+export * as list from "./list.stories";
 export * as radio from "./radio.stories";
 export * as select from "./select.stories";
 export * as tabs from "./tabs.stories";
