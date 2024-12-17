@@ -21,6 +21,7 @@ const Breadcrumbs = ({
   onClick: () => void;
 }) => {
   const pathParts = pathname.split("/").filter(Boolean);
+  if (!pathParts.length) return null;
   const root = stories.find(({ title }) => title.toLowerCase() === pathParts[0].toLowerCase());
   const sub =
     root && pathParts[1]
@@ -30,8 +31,7 @@ const Breadcrumbs = ({
   return (
     <Button
       as="a"
-      className="xs:hidden justify-start"
-      style={{ paddingLeft: 0 }}
+      className="xs:hidden justify-start pl-0"
       variant="text"
       role="button"
       onClick={onClick}
@@ -85,7 +85,9 @@ export const Layout = ({ stories }: { stories: Story[] }) => {
     <div className="stories">
       <header className="stories__header">
         <div className="stories__header-title">
-          <h1>Atoms</h1>
+          <a href="/" style={{ textDecoration: "none", color: "var(--primary-text)" }}>
+            <h1>Atoms</h1>
+          </a>
         </div>
         <HeaderActions asideOpen={asideOpen} setAsideOpen={setAsideOpen} />
       </header>

@@ -51,7 +51,7 @@ $flex-helpers: (
     @each $key, $value in $values {
       $class_name: get-class-name($bp-key, $prefix, $key, $use_prefix);
       .#{$class_name} {
-        #{$rule}: $value;
+        #{$rule}: $value !important;
       }
     }
   }
@@ -61,52 +61,52 @@ $flex-helpers: (
   @each $dir-key, $dir-value in variables.$space-dirs {
     $class-prefix: if($bp-key == "initial", "", "#{$bp-key}\\:");
     .#{$class-prefix}m#{$dir-key}-auto {
-      margin-#{$dir-value}: auto;
+      margin-#{$dir-value}: auto !important;
     }
   }
   .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}mx-auto {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
   .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}my-auto {
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
   }
 
   @each $size-key, $size-value in variables.$spaces {
     $class-prefix: if($bp-key == "initial", "", "#{$bp-key}\\:");
 
     .#{$class-prefix}m-#{$size-key} {
-      margin: $size-value;
+      margin: $size-value !important;
     }
     .#{$class-prefix}p-#{$size-key} {
-      padding: $size-value;
+      padding: $size-value !important;
     }
 
     @each $dir-key, $dir-value in variables.$space-dirs {
       .#{$class-prefix}m#{$dir-key}-#{$size-key} {
-        margin-#{$dir-value}: $size-value;
+        margin-#{$dir-value}: $size-value !important;
       }
       .#{$class-prefix}p#{$dir-key}-#{$size-key} {
-        padding-#{$dir-value}: $size-value;
+        padding-#{$dir-value}: $size-value !important;
       }
     }
 
     .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}mx-#{$size-key} {
-      margin-left: $size-value;
-      margin-right: $size-value;
+      margin-left: $size-value !important;
+      margin-right: $size-value !important;
     }
     .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}my-#{$size-key} {
-      margin-top: $size-value;
-      margin-bottom: $size-value;
+      margin-top: $size-value !important;
+      margin-bottom: $size-value !important;
     }
     .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}px-#{$size-key} {
-      padding-left: $size-value;
-      padding-right: $size-value;
+      padding-left: $size-value !important;
+      padding-right: $size-value !important;
     }
     .#{if($bp-key == "initial", "", "#{$bp-key}\\:")}py-#{$size-key} {
-      padding-top: $size-value;
-      padding-bottom: $size-value;
+      padding-top: $size-value !important;
+      padding-bottom: $size-value !important;
     }
   }
 }
