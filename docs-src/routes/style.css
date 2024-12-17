@@ -158,9 +158,13 @@ body {
   color: var(--blue-400);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 540px) {
   .stories__main {
     padding: 2rem; 
+  }
+
+  .stories__main-inner {
+    padding-bottom: 10rem;
   }
 
   .stories__header-btn:last-child {

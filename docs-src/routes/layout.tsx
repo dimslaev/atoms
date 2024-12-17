@@ -3,11 +3,44 @@ import { Outlet, Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router";
 import { Icon } from "@mdi/react";
 import { mdiMoonWaxingCrescent, mdiWhiteBalanceSunny, mdiMenu, mdiClose, mdiGithub } from "@mdi/js";
+import { Button } from "../../src/main";
 import "./style.css";
 
 type Story = {
   title: string;
   storyList: string[];
+};
+
+const Breadcrumbs = ({
+  stories,
+  pathname,
+  onClick,
+}: {
+  stories: Story[];
+  pathname: string;
+  onClick: () => void;
+}) => {
+  const pathParts = pathname.split("/").filter(Boolean);
+  const root = stories.find(({ title }) => title.toLowerCase() === pathParts[0].toLowerCase());
+  const sub =
+    root && pathParts[1]
+      ? root.storyList.find((it) => it.toLowerCase() === pathParts[1].toLowerCase())
+      : "Default";
+  if (!root) return null;
+  return (
+    <Button
+      as="a"
+      className="xs:hidden justify-start"
+      style={{ paddingLeft: 0 }}
+      variant="text"
+      role="button"
+      onClick={onClick}
+    >
+      <span className="p">{root.title[0].toUpperCase() + root.title.slice(1)}</span>
+      <span className="mx-1"> › </span>
+      <span className="p">{sub}</span>
+    </Button>
+  );
 };
 
 export const Layout = ({ stories }: { stories: Story[] }) => {
@@ -21,7 +54,7 @@ export const Layout = ({ stories }: { stories: Story[] }) => {
     if (pathname === "/") {
       navigate("/examples/profilesettings");
     }
-  }, [pathname, navigate, stories]);
+  }, [pathname, navigate]);
 
   useEffect(() => {
     if (mainRef.current) {
@@ -77,6 +110,13 @@ export const Layout = ({ stories }: { stories: Story[] }) => {
           ref={mainRef}
         >
           <div className="stories__main-inner">
+            <Breadcrumbs
+              stories={stories}
+              pathname={pathname}
+              onClick={() => {
+                setAsideOpen(true);
+              }}
+            />
             <Outlet />
           </div>
         </section>
