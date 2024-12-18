@@ -3,16 +3,16 @@ import { createBox, type CombineBoxProps } from "./box";
 import cn from "classnames";
 
 export interface IntrinsicCardProps extends HTMLAttributes<HTMLDivElement> {
-  noBorder?: boolean;
+  border?: boolean;
 }
 export type CardProps = CombineBoxProps<IntrinsicCardProps>;
 export const CardBase = createBox<IntrinsicCardProps>();
-export const Card = ({ noBorder = false, className, ...props }: CombineBoxProps<CardProps>) => {
+export const Card = ({ border = false, className, ...props }: CombineBoxProps<CardProps>) => {
   return (
     <CardBase
       className={cn({
         card: true,
-        ["card-no-border"]: noBorder,
+        ["card-border"]: border,
         [className!]: !!className,
       })}
       {...props}
