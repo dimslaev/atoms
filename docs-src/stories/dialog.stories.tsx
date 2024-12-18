@@ -15,7 +15,7 @@ export function Default() {
               setOpen(false);
             }}
           >
-            <DialogTitle>
+            <DialogTitle onClose={() => setOpen(false)}>
               <Text variant="h3">Are you sure?</Text>
             </DialogTitle>
             <DialogContent>

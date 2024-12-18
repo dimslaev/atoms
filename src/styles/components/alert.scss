@@ -20,9 +20,5 @@
     @extend %alert-title;
   }
 
-  &-close {
-    @extend %alert-close;
-  }
-
   @include alert.alert-colors();
 }

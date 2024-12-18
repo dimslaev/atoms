@@ -1,7 +1,6 @@
 import { HTMLAttributes, ReactNode, forwardRef } from "react";
 import { createBox, type CombineBoxProps } from "./box";
-import { Icon } from "./icon";
-import { mdiCloseCircle } from "@mdi/js";
+import { Close } from "./close";
 import cn from "classnames";
 
 export interface IntrinsicAlertProps extends Omit<HTMLAttributes<HTMLDivElement>, "title"> {
@@ -30,7 +29,6 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     alert: true,
     [`alert-${variant}`]: true,
     [`alert-${color}`]: true,
-    ["items-center"]: (title && !children) || (!title && children),
     [className!]: !!className,
   });
 
@@ -41,11 +39,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         {title && <div className="alert-title">{title}</div>}
         <div className="alert-message">{children}</div>
       </div>
-      {onClose && (
-        <button className="alert-close" onClick={onClose}>
-          <Icon path={mdiCloseCircle} size="sm" />
-        </button>
-      )}
+      {onClose && <Close className="alert-close" onClick={onClose} />}
     </AlertBase>
   );
 });

@@ -1,15 +1,12 @@
 import { List, ListItem, ListItemProps } from "../../src/components/list";
+import { Close } from "../../src/components/close";
 import { Icon } from "../../src/components/icon";
 import { mdiAlertCircle, mdiTrashCan } from "@mdi/js";
 import { Container, getRowTitle } from "../components/story-container";
-import { Button } from "../../src/main";
 
 const button = (
-  <Button
-    color="inherit"
-    size="sm"
+  <Close
     startIcon={<Icon path={mdiTrashCan} size="sm" />}
-    iconOnly
     onClick={(e) => {
       e.preventDefault();
       e.stopPropagation();

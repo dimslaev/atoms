@@ -1,5 +1,6 @@
 import { useRef, HTMLAttributes } from "react";
 import { createBox, type CombineBoxProps } from "./box";
+import { Close } from "./close";
 import cn from "classnames";
 
 export interface IntrinsicDialogProps extends HTMLAttributes<HTMLDivElement> {
@@ -53,10 +54,12 @@ export const DialogContent = ({ className, ...props }: DialogContentProps) => {
   );
 };
 
-export type IntrinsicDialogTitleProps = HTMLAttributes<HTMLDivElement>;
+export interface IntrinsicDialogTitleProps extends HTMLAttributes<HTMLDivElement> {
+  onClose?: () => void;
+}
 export type DialogTitleProps = CombineBoxProps<IntrinsicDialogTitleProps>;
 export const DialogTitleBase = createBox<IntrinsicDialogTitleProps>();
-export const DialogTitle = ({ className, ...props }: DialogTitleProps) => {
+export const DialogTitle = ({ className, children, onClose, ...props }: DialogTitleProps) => {
   return (
     <DialogTitleBase
       className={cn({
@@ -64,7 +67,10 @@ export const DialogTitle = ({ className, ...props }: DialogTitleProps) => {
         [className!]: !!className,
       })}
       {...props}
-    />
+    >
+      {children}
+      {onClose && <Close onClick={onClose} />}
+    </DialogTitleBase>
   );
 };
 

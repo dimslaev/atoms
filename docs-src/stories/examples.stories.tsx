@@ -12,7 +12,7 @@ import { Dialog, DialogTitle, DialogContent, DialogActions } from "../../src/com
 import { Tabs, Tab } from "../../src/components/tabs";
 import { Chip } from "../../src/components/chip";
 import { Icon } from "../../src/components/icon";
-import { mdiAccount, mdiBell, mdiEmail, mdiLock, mdiClose } from "@mdi/js";
+import { mdiAccount, mdiBell, mdiEmail, mdiLock } from "@mdi/js";
 
 export const ProfileSettings = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -138,16 +138,10 @@ export const ProfileSettings = () => {
 
       {showDeleteDialog && (
         <Dialog onClose={() => setShowDeleteDialog(false)}>
-          <DialogTitle className="flex items-center justify-between">
+          <DialogTitle onClose={() => setShowDeleteDialog(false)}>
             <Text variant="h3" as="div">
               Delete Account
             </Text>
-            <Button
-              iconOnly
-              variant="text"
-              onClick={() => setShowDeleteDialog(false)}
-              startIcon={<Icon path={mdiClose} />}
-            />
           </DialogTitle>
           <DialogContent>
             <Text>

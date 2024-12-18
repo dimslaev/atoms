@@ -28,10 +28,10 @@
 }
 
 @mixin button-colors($selector) {
-  &.#{$selector}-solid.#{$selector}-inherit:not(.#{$selector}-disabled),
-  &.#{$selector}-text.#{$selector}-inherit:not(.#{$selector}-disabled) {
-    color: inherit;
+  &.#{$selector}-solid.#{$selector}-inherit:not(.#{$selector}-disabled) {
     border-color: transparent;
+    background-color: var(--inherit);
+    color: inherit;
 
     &:hover {
       background-color: var(--inherit-hover);
@@ -43,17 +43,31 @@
   }
 
   &.#{$selector}-outline.#{$selector}-inherit:not(.#{$selector}-disabled) {
-    color: inherit;
     border-color: var(--inherit);
+    background-color: transparent;
+    color: inherit;
 
     &:hover {
       background-color: var(--inherit-hover);
-      border-color: var(--inherit-hover);
+      border-color: transparent;
     }
 
     &:active {
       background-color: var(--inherit-pressed);
-      border-color: var(--inherit-pressed);
+      border-color: transparent;
+    }
+  }
+
+  &.#{$selector}-text.#{$selector}-inherit:not(.#{$selector}-disabled) {
+    color: inherit;
+    border-color: transparent;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
     }
   }
 

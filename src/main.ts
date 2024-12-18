@@ -1,9 +1,12 @@
+export { Alert } from "./components/alert";
 export { AspectRatio } from "./components/aspect-ratio";
+export { Avatar } from "./components/avatar";
 export { Box } from "./components/box";
 export { Button } from "./components/button";
 export { Card } from "./components/card";
 export { Checkbox } from "./components/checkbox";
 export { Chip } from "./components/chip";
+export { Close } from "./components/close";
 export { Dialog } from "./components/dialog";
 export { Divider } from "./components/divider";
 export { Icon } from "./components/icon";

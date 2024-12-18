@@ -26,24 +26,6 @@
   font-weight: var(--weight-bold);
 }
 
-%alert-close {
-  @extend %interactive-element;
-  @extend %flex-center;
-  flex-shrink: 0;
-  padding: 0;
-  height: 2.4rem;
-  width: 2.4rem;
-  color: inherit;
-
-  &:hover {
-    opacity: 0.75;
-  }
-
-  &:active {
-    opacity: 0.9;
-  }
-}
-
 @mixin alert-colors() {
   &-outline {
     @each $color in primary, success, error {

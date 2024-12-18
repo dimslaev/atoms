@@ -64,7 +64,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
       {...rest}
     >
       {startIcon}
-      <div className="btn-label">{children}</div>
+      {children && <div className="btn-label">{children}</div>}
       {endIcon}
     </ButtonBase>
   );
