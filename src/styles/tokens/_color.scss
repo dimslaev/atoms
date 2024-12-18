@@ -75,13 +75,13 @@
 
 [data-theme="dark"] {
   --primary: var(--blue-400);
-  --primary-hover: var(--blue-300);
-  --primary-pressed: var(--blue-500);
+  --primary-hover: var(--blue-500);
+  --primary-pressed: var(--blue-700);
   --on-primary: var(--black);
   --primary-subdued: var(--blue-700);
-  --inherit: var(--gray-700);
-  --inherit-hover: var(--gray-800);
-  --inherit-pressed: var(--gray-900);
+  --inherit: rgba(255, 255, 255, 0.2);
+  --inherit-hover: rgba(255, 255, 255, 0.15);
+  --inherit-pressed: rgba(255, 255, 255, 0.1);
   --text-primary: var(--gray-50);
   --text-secondary: var(--gray-300);
   --background: var(--black);
@@ -92,13 +92,13 @@
   --on-surface-variant: var(--gray-400);
   --outline: var(--gray-600);
   --success: var(--green-400);
-  --success-hover: var(--green-300);
-  --success-pressed: var(--green-500);
+  --success-hover: var(--green-500);
+  --success-pressed: var(--green-700);
   --success-subdued: var(--green-900);
   --on-success: var(--black);
   --error: var(--red-500);
-  --error-hover: var(--red-400);
-  --error-pressed: var(--red-600);
+  --error-hover: var(--red-600);
+  --error-pressed: var(--red-800);
   --error-subdued: var(--red-900);
   --on-error: var(--black);
 }
@@ -107,13 +107,13 @@
   color-scheme: light;
 
   --primary: var(--blue-500);
-  --primary-hover: var(--blue-400);
-  --primary-pressed: var(--blue-600);
+  --primary-hover: var(--blue-600);
+  --primary-pressed: var(--blue-800);
   --on-primary: var(--white);
   --primary-subdued: var(--blue-100);
-  --inherit: var(--gray-200);
-  --inherit-hover: var(--gray-300);
-  --inherit-pressed: var(--gray-400);
+  --inherit: rgba(0, 0, 0, 0.1);
+  --inherit-hover: rgba(0, 0, 0, 0.2);
+  --inherit-pressed: rgba(0, 0, 0, 0.3);
   --text-primary: var(--black);
   --text-secondary: var(--gray-600);
   --background: var(--gray-100);
@@ -124,13 +124,13 @@
   --on-surface-variant: var(--gray-500);
   --outline: var(--gray-300);
   --success: var(--green-500);
-  --success-hover: var(--green-400);
-  --success-pressed: var(--green-600);
+  --success-hover: var(--green-600);
+  --success-pressed: var(--green-800);
   --success-subdued: var(--green-100);
   --on-success: var(--white);
   --error: var(--red-500);
-  --error-hover: var(--red-400);
-  --error-pressed: var(--red-600);
+  --error-hover: var(--red-600);
+  --error-pressed: var(--red-800);
   --error-subdued: var(--red-100);
   --on-error: var(--white);
 }
