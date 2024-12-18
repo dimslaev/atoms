@@ -1,3 +1,4 @@
+export { AspectRatio } from "./components/aspect-ratio";
 export { Box } from "./components/box";
 export { Button } from "./components/button";
 export { Card } from "./components/card";

@@ -1,6 +1,7 @@
 import { Card, CardMedia, CardContent, CardTitle, CardActions } from "../../src/components/card";
 import { Text } from "../../src/components/text";
 import { Button } from "../../src/components/button";
+import { AspectRatio } from "../../src/components/aspect-ratio";
 import { Container } from "../components/story-container";
 
 export function Default() {
@@ -9,7 +10,9 @@ export function Default() {
       <Container title="All elements">
         <Card>
           <CardMedia>
-            <img src="/lake.jpeg" alt="" />
+            <AspectRatio ratio={16 / 9}>
+              <img src="/lake.jpeg" alt="" />
+            </AspectRatio>
           </CardMedia>
           <CardTitle>
             <Text variant="h3">The standard Lorem Ipsum passage</Text>
@@ -74,8 +77,8 @@ export function Default() {
           </CardContent>
         </Card>
       </Container>
-      <Container title="No border">
-        <Card noBorder>
+      <Container title="With border">
+        <Card border>
           <CardContent>
             <Text>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
